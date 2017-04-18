@@ -1,0 +1,28 @@
+<div class="panel panel-default" ng-controller="deviceDismantleController">
+    <!-- alert -->
+    <div>
+        <toaster-container toaster-options="{'position-class': 'toast-top-right', 'close-button':true}"></toaster-container>
+    </div>
+    <div class="wrapper-sm" >
+        <div class="row">
+            <div class="col-sm-12 form-group">
+                <button class="btn btn-default pull-right" ng-click="search()">查询</button>
+                <button  onClick="javascript:WdatePicker({el:'endTime',dateFmt:'yyyy-MM-dd HH:mm:ss',skin:'twoer',minDate:'#F{$dp.$D(\'beginTime\')}'});" type="button" class="btn btn-default pull-right m-r-xs" ><i class="glyphicon glyphicon-calendar"></i></button>
+                <input id="endTime" ng-model="endTime" class="form-control w-sm pull-right m-r-xs " placeholder="请选择结束日期" type="text"  onClick="javascript:WdatePicker({dateFmt:'yyyy-MM-dd HH:mm:ss',skin:'twoer',minDate:'#F{$dp.$D(\'beginTime\')}'});">
+                <button  onClick="javascript:WdatePicker({el:'beginTime',dateFmt:'yyyy-MM-dd HH:mm:ss',skin:'twoer',maxDate:'#F{$dp.$D(\'endTime\')}'});" type="button" class="btn btn-default pull-right m-r-xs" ><i class="glyphicon glyphicon-calendar"></i></button>
+                <input id="beginTime"  ng-model="beginTime" class="form-control w-sm pull-right m-r-xs " placeholder="请选择开始日期" type="text"   onClick="javascript:WdatePicker({dateFmt:'yyyy-MM-dd HH:mm:ss',skin:'twoer',maxDate:'#F{$dp.$D(\'endTime\')}'});">
+                <input ng-model="vehicleIdentifyNum"  class="form-control w-sm pull-right m-r-xs" placeholder="输入车架号码查询"/>
+                <input ng-model="customerName"  class="form-control w-sm pull-right m-r-xs" placeholder="输入车主姓名查询"/>
+                <select class="form-control w-sm pull-right m-r-xs" ng-model="dismantleStatus"  ng-options="status.name for status in statusList">
+                </select>
+            </div>
+        </div>
+        <div class="panel panel-default">
+            <div class="panel-body">
+                <div class="table-responsive">
+                    <div ng-grid="gridOptions" style="min-height:480px"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,117 @@
+<div class="modal-header">
+    <h3 class="modal-title">拆除信息</h3>
+</div>
+<div class="modal-body">
+    <form name="form" class="form-validation" novalidate>
+        <!-- alert -->
+        <div>
+            <toaster-container toaster-options="{'position-class': 'toast-top-right', 'close-button':true}"></toaster-container>
+        </div>
+
+
+        <div class="row">
+            <label class="col-sm-3 control-label text-right">拆除师傅姓名:</label>
+            <div class="col-sm-9">
+                <label class="col-sm-12 control-label text-left">
+                    {{deviceDismantle.dismantlePersonName}}
+                </label>
+            </div>
+        </div>
+
+
+        <div class="row">
+            <label class="col-sm-3 control-label text-right">拆除师傅电话:</label>
+            <div class="col-sm-9">
+                <label class="col-sm-12 control-label text-left">
+                    {{deviceDismantle.dismantlePersonPhone}}
+                </label>
+            </div>
+        </div>
+
+
+        <div class="row">
+            <label class="col-sm-3 control-label text-right">所属公司:</label>
+            <div class="col-sm-9">
+                <label class="col-sm-12 control-label text-left">
+                    {{deviceDismantle.providerName}}
+                </label>
+            </div>
+        </div>
+
+        <div class="row">
+            <label class="col-sm-3 control-label text-right">拆除原因:</label>
+            <div class="col-sm-9">
+                <label class="col-sm-12 control-label text-left">
+                    {{deviceDismantle.dismantleReason}}
+                </label>
+            </div>
+        </div>
+
+        <div class="row">
+            <label class="col-sm-3 control-label text-right">拆除状态:</label>
+            <div class="col-sm-9">
+                <label class="col-sm-12 control-label text-left" ng-if=" deviceDismantle.dismantleStatus == 0 ">
+                    待审核
+                </label>
+                <label class="col-sm-12 control-label text-left" ng-if=" deviceDismantle.dismantleStatus == 1 ">
+                    审核通过
+                </label>
+                <label class="col-sm-12 control-label text-left" ng-if=" deviceDismantle.dismantleStatus == 2 ">
+                    拒绝通过
+                </label>
+            </div>
+        </div>
+
+        <div class="row">
+            <label class="col-sm-3 control-label text-right">提交时间:</label>
+            <div class="col-sm-9">
+                <label class="col-sm-12 control-label text-left">
+                    {{deviceDismantle.createTime | date:'yyyy-MM-dd HH:mm:ss' }}
+                </label>
+            </div>
+        </div>
+
+
+        <div class="row">
+            <label class="col-sm-3 control-label text-right">提交人手机号:</label>
+            <div class="col-sm-9">
+                <label class="col-sm-12 control-label text-left">
+                    {{deviceDismantle.submitPersonPhone}}
+                </label>
+            </div>
+        </div>
+
+        <div class="row">
+            <label class="col-sm-3 control-label text-right">车主姓名:</label>
+            <div class="col-sm-9">
+                <label class="col-sm-12 control-label text-left">
+                    {{deviceDismantle.customerName}}
+                </label>
+            </div>
+        </div>
+
+
+        <div class="row">
+            <label class="col-sm-3 control-label text-right">车架号:</label>
+            <div class="col-sm-9">
+                <label class="col-sm-12 control-label text-left">
+                    {{deviceDismantle.vehicleIdentifyNum}}
+                </label>
+            </div>
+        </div>
+
+        
+        <div class="form-group row">
+            <label class="col-sm-3 control-label text-right">审批意见:</label>
+            <div class="col-sm-8">
+                <label class="col-sm-12 control-label text-left">
+                    {{deviceDismantle.approvalOpinion}}
+                </label>
+            </div>
+        </div>
+
+    </form>
+</div>
+<div class="modal-footer ng-scope">
+    <button class="btn btn-default" ng-click="close()">关闭</button>
+</div>

@@ -1,0 +1,30 @@
+<div class="panel panel-default" ng-controller="mileageWarnReportController">
+    <div>
+        <toaster-container toaster-option="{'position-class': 'toast-top-right', 'close-button':true}"></toaster-container>
+    </div>
+    <div class="wrapper-sm">
+        <div class="row">
+            <div class="col-lg-12">
+                <label class="control-label text-center pull-left" style="margin-top: 6px; margin-bottom: 6px">选择期间：</label>
+                <input id="beginTime" ng-model="startDate" class="form-control w-sm pull-left m-r-xs m-b-xs" placeholder="开始日期" type="text" style="width: 120px" onClick="WdatePicker({dateFmt:'yyyy-MM-dd',skin:'twoer'})">
+                <button id="btnBeginTime" onClick="WdatePicker({el:'beginTime',dateFmt:'yyyy-MM-dd',skin:'twoer',maxDate:'#F{$dp.$D(\'endTime\')}'})" type="button" class="btn btn-default pull-left m-r-xs m-b-xs"><i class="glyphicon glyphicon-calendar"></i></button>
+                <input id="endTime" ng-model="endDate" class="form-control w-sm pull-left m-r-xs m-b-xs" placeholder="结束日期" type="text" style="width: 120px" onClick="WdatePicker({dateFmt:'yyyy-MM-dd',skin:'twoer'})">
+                <button id="btnEndTime" onClick="WdatePicker({el:'endTime',dateFmt:'yyyy-MM-dd',skin:'twoer',minDate:'#F{$dp.$D(\'beginTime\')}'})" type="button" class="btn btn-default pull-left m-r-sm m-b-xs" ><i class="glyphicon glyphicon-calendar"></i></button>
+
+                <button class="btn btn-default btn-addon pull-right m-b-sm" ng-click="export()"><i class="glyphicon glyphicon-export"></i>导出报表</button>
+                <button class="btn btn-default btn-addon pull-right m-b-sm" ng-click="search()" style="margin-right: 6px">查询</button>
+                <input ng-model="applyNum" class="form-control w-sm pull-right m-r-xs" placeholder="输入申请编号查询"/>
+                <input ng-model="vehicleIdentifyNum" class="form-control w-sm pull-right m-r-xs" placeholder="输入车架号查询"/>
+                <input ng-model="simCode" class="form-control w-sm pull-right m-r-xs" placeholder="输入SIM卡号查询"/>
+            </div>
+        </div>
+
+        <div class="panel panel-default">
+            <div class="panel-body">
+                <div class="table-responsive">
+                    <div ng-grid="gridOptions" style="min-height:480px"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

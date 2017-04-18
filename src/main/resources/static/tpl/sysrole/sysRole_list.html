@@ -1,0 +1,18 @@
+<div class="panel panel-default" ng-controller="sysRoleListController">
+    <div>
+        <toaster-container toaster-options="{'position-class': 'toast-top-right', 'close-button':true}"></toaster-container>
+    </div>
+    <div class="wrapper-sm" >
+        <div>
+            <button class="btn m-b-xs btn-default btn-addon" ng-click="createSysRole()"><i class="fa fa-user"></i>添加角色</button>
+        </div>
+
+        <div class="panel panel-default">
+            <div class="panel-body">
+                <div class="table-responsive">
+                    <div ng-grid="gridOptions" style="min-height:480px"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

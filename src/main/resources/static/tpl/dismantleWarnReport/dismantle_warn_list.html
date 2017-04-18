@@ -1,0 +1,38 @@
+<div class="panel panel-default" ng-controller="dismantleWarnController">
+    <div>
+        <toaster-container toaster-option="{'position-class': 'toast-top-right', 'close-button':true}"></toaster-container>
+    </div>
+    <div class="wrapper-sm">
+        <div class="row">
+            <div class="col-lg-12" style="margin-bottom: 6px">
+                <label class="control-label text-center pull-left" style="margin-top: 6px;margin-bottom: 6px;">选择日期：</label>
+                <input ng-model="beginTime" id="beginTime" class="form-control w-sm pull-left m-r-xs " placeholder="开始日期" type="text"  onClick="WdatePicker({dateFmt:'yyyy-MM-dd HH:mm:ss',skin:'twoer',maxDate:'#F{$dp.$D(\'endTime\')}'})">
+                <button  onClick="WdatePicker({el:'beginTime',dateFmt:'yyyy-MM-dd HH:mm:ss',skin:'twoer',maxDate:'#F{$dp.$D(\'endTime\')}'})" type="button" class="btn btn-default pull-left m-r-xs" ><i class="glyphicon glyphicon-calendar"></i></button>
+
+                <input ng-model="endTime" id="endTime" class="form-control w-sm pull-left m-r-xs " placeholder="结束日期" type="text"  onClick="WdatePicker({dateFmt:'yyyy-MM-dd HH:mm:ss',skin:'twoer',minDate:'#F{$dp.$D(\'beginTime\')}'})">
+                <button  onClick="WdatePicker({el:'endTime',dateFmt:'yyyy-MM-dd HH:mm:ss',skin:'twoer',minDate:'#F{$dp.$D(\'beginTime\')}'})" type="button" class="btn btn-default pull-left m-r-xs" ><i class="glyphicon glyphicon-calendar"></i></button>
+
+
+            </div>
+            <div class="col-lg-12">
+                <label class="control-label text-center pull-left" style="margin-top: 6px;margin-bottom: 6px;">选择省份：</label>
+                <select ng-model="provinceId" ng-options="p.id as p.provinceName for p in provinceList" class="form-control m-r-xs pull-left" style="width:120px;margin-left: 5px">
+                    <option value="">所有省份</option>
+                </select>
+                <input type="text" ng-model="simCode" class="form-control w-sm pull-left m-r-xs" placeholder="输入SIM卡号查询" />
+                <input type="text" ng-model="vehicleIdentifyNum" class="form-control w-sm pull-left m-r-xs" placeholder="输入车架号查询"/>
+                <input type="text" ng-model="applyNum" class="form-control w-sm pull-left m-r-xs" placeholder="输入申请编号查询"/>
+
+                <button class="btn btn-default btn-addon pull-right m-b-sm" ng-click="export()" style="margin-right: 5px"><i class="glyphicon glyphicon-export"></i>导出报表</button>
+                <button class="btn btn-default btn-addon pull-right m-b-sm" ng-click="search()" style="margin-right: 5px">查询</button>
+            </div>
+        </div>
+        <div class="panel panel-default">
+            <div class="panel-body">
+                <div class="table-responsive">
+                    <div ng-grid="gridOptions" style="min-height: 480px"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

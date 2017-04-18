@@ -1,0 +1,67 @@
+server:
+  port: 8088
+
+spring:
+  output:
+    ansi:
+      enabled: never
+
+  jpa:
+    database: MYSQL
+    show-sql: true
+    hibernate:
+      ddl-auto: update
+
+  datasource:
+    platform: mysql
+    url: jdbc:mysql://192.168.0.102:3306/admin?useUnicode=true&characterEncoding=UTF-8
+    username: root
+    password: mysql
+    driver-class-name: com.mysql.jdbc.Driver
+
+  redis:
+    ##集群对外暴露的IP
+    host: 192.168.0.102
+    port: 6379
+
+  batch:
+    job:
+      enabled: false
+    initializer:
+      enabled: false
+
+file:
+  importExcelService: http://192.168.0.102:8080/excel/
+  filePath: /Library/WebServer/Documents/device/
+  deviceImgPath: /Users/qiaohao/Downloads/tomcat8/webapps/device/
+  impExcelPath: /Users/qiaohao/Downloads/tomcat8/webapps/excel/
+  androidFilePath: /Library/WebServer/Documents/android/
+  corpInnerFilePath: /Library/WebServer/Documents/corpInnerFile/
+  requestFrontPath: http://localost/
+  newsFilePath: /Library/WebServer/Documents/information/news/
+  requestNewsFilePath: http://localhost/information/news/
+  companyFilePath: /Library/WebServer/Documents/information/companyFile/
+  requestCompanyFilePath: http://localhost/information/companyFile/
+  requestAndroidFilePath: http://localhost/android/
+
+
+systemParam:
+  distance: 1
+  minute: 5
+  reportResortDistance: 1
+
+
+
+
+
+#sms:
+#  ipAddr: 222.73.56.19
+#  port: 6974
+
+
+request:
+  tubaServerUrl: http://192.168.0.102:9983
+  baiduServerUrl: http://api.map.baidu.com
+  wxServerUrl: https://api.weixin.qq.com
+  qqServerUrl: http://apis.map.qq.com
+  cmppServerUrl: http://10.10.1.31

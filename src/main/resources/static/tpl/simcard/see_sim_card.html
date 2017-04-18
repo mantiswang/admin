@@ -1,0 +1,56 @@
+<div class="modal-header">
+    <h3 class="modal-title">sim卡号</h3>
+</div>
+<div class="modal-body">
+    <form name="form" class="form-validation" novalidate>
+        <!-- alert -->
+        <div>
+            <toaster-container toaster-options="{'position-class': 'toast-top-right', 'close-button':true}"></toaster-container>
+        </div>
+        <!-- / alert -->
+        <div class="form-group row">
+            <label class="col-sm-3 control-label text-right">sim卡号:</label>
+            <div class="col-sm-9">
+
+                <label class="col-sm-12 control-label text-left">{{simCard.simCode}}</label>
+
+            </div>
+        </div>
+
+        <div class="form-group row">
+            <label class="col-sm-3 control-label text-right">串号:</label>
+            <div class="col-sm-9">
+
+                <label class="col-sm-12 control-label text-left">{{simCard.simCardImei}}</label>
+
+            </div>
+        </div>
+
+        <div class="form-group row">
+            <label class="col-sm-3 control-label text-right">所属客户:</label>
+            <div class="col-sm-9">
+
+                <label class="col-sm-12 control-label text-left">{{simCard.providerName}}</label>
+
+            </div>
+        </div>
+
+        <div class="form-group row">
+            <label class="col-sm-3 control-label text-right">设备类型:</label>
+            <div class="col-sm-9">
+                <label class="col-sm-12 control-label text-left">{{simCard.simCardType}}</label>
+            </div>
+        </div>
+
+        <div class="form-group row">
+            <label class="col-sm-3 control-label text-right">卡片状态:</label>
+            <div class="col-sm-9">
+                <label class="col-sm-12 control-label text-left">{{simCard.status}}</label>
+            </div>
+        </div>
+
+    </form>
+</div>
+<div class="modal-footer ng-scope">
+    <button class="btn btn-default" ng-click="close()">关闭</button>
+</div>

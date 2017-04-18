@@ -1,0 +1,23 @@
+<div class="panel panel-default" ng-controller="gatherReportListController">
+    <div>
+        <toaster-container toaster-options="{'position-class': 'toast-top-right', 'close-button':true}"></toaster-container>
+    </div>
+    <div class="wrapper-sm" >
+
+        <div class="row">
+            <div class="col-lg-12">
+                <button class="btn m-b-xs btn-default pull-right m-r-xs" ng-click="export()"><i class="glyphicon glyphicon-export"></i>导出信息</button>
+                <button class="btn m-b-xs btn-default pull-right m-r-xs" ng-click="search()">查询</button>
+                 <input ng-model="address" style="width: 160px" class="form-control w-sm pull-right m-r-xs" placeholder="输入聚集地位置查询"/>
+            </div>
+        </div>
+
+        <div class="panel panel-default">
+            <div class="panel-body">
+                <div class="table-responsive">
+                    <div ng-grid="gridOptions" style="min-height:480px"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

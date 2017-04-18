@@ -1,0 +1,12 @@
+<div ng-controller="tubaCarMonitorController">
+    <toaster-container toaster-options="{'position-class': 'toast-top-right', 'close-button':true}"></toaster-container>
+    <form>
+        <input ng-model="simCardNum" class="form-control w-sm pull-left m-r-xs" placeholder="请输入sim卡号" ng-show="!showPanorama"/>
+        <!--<button type="submit" class="btn m-b-xs btn-default pull-left m-r-xs" ng-click="getLastPosition('init')" ng-show="!showPanorama">查询</button>-->
+        <button class="btn m-b-xs btn-default pull-left m-r-xs" ng-click="selectVehicleGroup()" >查询车辆信息</button>
+    </form>
+    <div id="allmap" class="setDivClass" fullscreen="isFullscreen" only-watched-property></div>
+    <div class="table-responsive">
+        <div class="setTableDivClass" ng-grid="gridMonitorlist" style="position:fixed;height:190px;font-size: 11px;background-color:#fff;"></div>
+    </div>
+</div>

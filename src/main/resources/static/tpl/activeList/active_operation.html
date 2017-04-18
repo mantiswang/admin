@@ -1,0 +1,23 @@
+<div class="modal-header">
+    <h4>操作</h4>
+</div>
+<div class="modal-body">
+    <div>
+        <toaster-container toaster-options="{'position-class': 'toast-top-right', 'close-button':true}"></toaster-container>
+    </div>
+    <div class="form-group row">
+        <div class="col-sm-8">
+            <textarea  rows="6" style="width: 550px;height: 120px;resize: none;" placeholder="备注" class="form-control w-sm m-r-xs" ng-model="remark" required></textarea>
+            <p>
+                <span style="color: red" ng-show="remark == null || remark == ''">
+                    <span ng-show="remark == null || remark == ''">*备注不能为空</span>
+                </span>
+            </p>
+        </div>
+    </div>
+</div>
+<div class="modal-footer  ng-scope">
+    <button class="btn btn-default pull-left" ng-click="register()" ng-disabled="remark == null || remark == ''">登记</button>
+    <button class="btn btn-default pull-right" style="margin-left: 20px" ng-click="activeFail()" ng-show="flag == 1" ng-disabled="remark == null || remark == ''" >激活失败</button>
+    <button class="btn btn-default pull-right" ng-click="active()" ng-disabled="remark == null || remark == ''">激活</button>
+</div>

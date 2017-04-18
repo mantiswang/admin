@@ -1,0 +1,45 @@
+<div ng-controller="gpsActivateQueryDetailsController" cg-busy="{promise:myPromise, message:'正在加载,请稍后...', backdrop:false}">
+  <toaster-container toaster-options="{'position-class': 'toast-top-right', 'close-button':true}"></toaster-container>
+  <div class="bg-light lter b-b wrapper-sm">
+      <div class="input-group">
+        <input type="text" class="form-control rounded" placeholder="请输入sim卡号进行查询" ng-model="simCard">
+        <span class="input-group-btn">
+          <button class="btn btn-default" type="button" ng-click="getData(simCard, 1)"> <i class="fa fa-search "></i></button>
+          <!--<button class="btn btn-default" type="button" ng-click="refresh()"> <i class="fa fa-refresh "></i></button>-->
+        </span>
+      </div>
+  </div>
+  <ul class="list-group no-borders" ng-if="data != null">
+    <li class="list-group-item" style="padding:2px">
+      安装时间:{{data.installTime | date: 'yyyy-MM-dd HH:mm:ss'}}
+    </li>
+    <li class="list-group-item" style="padding:2px">
+      车架号:{{data.vin}}
+    </li>
+    <li class="list-group-item" style="padding:2px">
+      订单编号:{{data.applyNum}}
+    </li>
+    <li class="list-group-item" style="padding:2px">
+      SIM卡号:{{data.simCode}}
+    </li>
+    <li class="list-group-item" style="padding:2px">
+      安装地点:{{data.addr}}
+    </li></ul>
+
+  <ul class="list-group no-borders" ng-if="deviceInfo != null">
+    <li class="list-group-item" style="padding:2px">
+      安装时间:{{deviceInfo.installTime | date: 'yyyy-MM-dd HH:mm:ss'}}
+    </li>
+    <li class="list-group-item" style="padding:2px">
+      车架号:{{deviceInfo.vin}}
+    </li>
+    <li class="list-group-item" style="padding:2px">
+      订单编号:{{deviceInfo.applyNum}}
+    </li>
+    <li class="list-group-item" style="padding:2px">
+      SIM卡号:{{deviceInfo.simCode}}
+    </li>
+    <li class="list-group-item" style="padding:2px">
+      安装地点:{{deviceInfo.addr}}
+    </li></ul>
+</div>

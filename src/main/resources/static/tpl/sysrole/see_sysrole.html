@@ -1,0 +1,22 @@
+<div class="modal-header">
+    <h3 class="modal-title">角色信息</h3>
+</div>
+<div class="modal-body">
+    <form name="form" class="form-validation" novalidate>
+        <!-- alert -->
+        <div>
+            <toaster-container toaster-options="{'position-class': 'toast-top-right', 'close-button':true}"></toaster-container>
+        </div>
+        <!-- / alert -->
+        <div class="form-group row">
+            <label class="col-sm-3 control-label text-right">角色名:</label>
+            <div class="col-sm-12">
+                <label class="col-sm-4 control-label text-right">{{sysRole.roleName}}</label>
+            </div>
+        </div>
+
+    </form>
+</div>
+<div class="modal-footer ng-scope">
+    <button class="btn btn-default" ng-click="close()">关闭</button>
+</div>

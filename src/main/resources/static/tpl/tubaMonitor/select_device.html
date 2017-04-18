@@ -1,0 +1,28 @@
+<div class="modal-body" ><!-- panel panel-default -->
+    <div class="wrapper-sm" >
+
+        <div class="row">
+            <div class="col-lg-12">
+                <button class="btn m-b-xs btn-default btn-addon pull-left m-r" ng-click="selectVehicleGroup()"><i class="fa fa-user"></i>选择分组</button>
+                <button class="btn m-b-xs btn-default pull-right m-r-xs" ng-click="search()">查询</button>
+                <input ng-model="vehicleIdentifyNum" class="form-control w-sm pull-right m-r-xs" placeholder="输入车架号码查询"/>
+                <input ng-model="simCodeInput" class="form-control w-sm pull-right m-r-xs" placeholder="输入sim号码查询"/>
+            </div>
+        </div>
+
+        <div class="panel panel-default" style="margin-bottom: 0px;">
+            <div class="panel-body">
+                <div class="table-responsive">
+                    <div ng-grid="gridOptions" style="min-height:300px;height: 400px"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="modal-footer ng-scope" style="padding-top: 8px; padding-bottom: 8px">
+        <button class="btn btn-default" ng-click="close()">取消</button>
+        <button type="submit" class="btn btn-primary" ng-click="sure()"  ng-disabled="simCode == ''" >确定</button>
+    </div>
+    <div style="width:100%;height:100%;filter:alpha(opacity=40);-moz-opacity:0.4;-khtml-opacity:0.4;opacity:0.4;background:#000;position:absolute;top:0;left:0;z-index:3000;line-height:500px; text-align:center;"
+         ng-show="busy"><img src="../img/loading.gif" style="width:40px;height:40px;">
+    </div>
+</div>

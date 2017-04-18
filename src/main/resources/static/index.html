@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="zh-CN" data-ng-app="app">
+<head>
+  <meta charset="utf-8" />
+  <meta name="renderer" content="webkit">
+  <title>车辆管理系统</title>
+  <meta name="description" content="Angularjs, Html5, Music, Landing, 4 in 1 ui kits package" />
+  <meta name="keywords" content="AngularJS, angular, bootstrap, admin, dashboard, panel, app, charts, components,flat, responsive, layout, kit, ui, route, web, app, widgets" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+  <link rel="stylesheet" href="../libs/assets/animate.css/animate.css" type="text/css" />
+  <link rel="stylesheet" href="../libs/assets/font-awesome/css/font-awesome.min.css" type="text/css" />
+  <link rel="stylesheet" href="../libs/assets/simple-line-icons/css/simple-line-icons.css" type="text/css" />
+  <link rel="stylesheet" href="../libs/jquery/bootstrap/dist/css/bootstrap.css" type="text/css" />
+  <link rel="stylesheet" href="css/app.angular.css" type="text/css" />
+  <link href="http://api.map.baidu.com/library/TrafficControl/1.4/src/TrafficControl_min.css" rel="stylesheet" type="text/css" />
+  <script language="javascript" type="text/javascript" src="../libs/jquery/My97DatePicker/WdatePicker.js"></script>
+  <script src="js/app.angular.js"></script>
+  <script type="text/javascript" src="http://api.map.baidu.com/api?v=2.0&ak=BnVYjHvFw99KFXh68gK4M42bC4XSSeyS"></script>
+  <script type="text/javascript" src="http://api.map.baidu.com/library/DistanceTool/1.2/src/DistanceTool_min.js"></script>
+  <script type="text/javascript" src="http://api.map.baidu.com/library/TrafficControl/1.4/src/TrafficControl_min.js"></script>
+  <script type="text/javascript" src="http://api.map.baidu.com/library/DrawingManager/1.4/src/DrawingManager_min.js"></script>
+  <link rel="stylesheet" href="http://api.map.baidu.com/library/DrawingManager/1.4/src/DrawingManager_min.css" />
+  <script type="text/javascript" src="http://api.map.baidu.com/library/DrawingManager/1.4/src/DrawingManager_min.js"></script>
+  <link rel="stylesheet" href="http://api.map.baidu.com/library/DrawingManager/1.4/src/DrawingManager_min.css" />
+  <script type="text/javascript" src="http://api.mapbar.com/api/mapbard31.3.js"></script>
+  <script src="https://res.wx.qq.com/open/js/jweixin-1.2.0.js"></script>
+  <script src="js/timer.js"></script>
+  <style>
+    label{
+      margin-top: 8px;
+    }
+
+  </style>
+
+</head>
+<body ng-controller="AppCtrl">
+  <div class="app" id="app"
+       ng-class="{
+       'app-header-fixed':app.settings.headerFixed,
+       'app-aside-fixed':app.settings.asideFixed,
+       'app-aside-folded':app.settings.asideFolded,
+       'app-aside-dock':app.settings.asideDock,
+       'container':app.settings.container}" ui-view></div>
+  <div id="loadWin" style="width:100%;height:100%;filter:alpha(opacity=40);-moz-opacity:0.4;-khtml-opacity:0.4;opacity:0.4;background:#000;position:absolute;top:0;left:0;z-index:3000;line-height:700px; text-align:center;"
+       ng-show="busy"><img src="../img/loading.gif" style="width:40px;height:40px;">
+  </div>
+</body>
+</html>

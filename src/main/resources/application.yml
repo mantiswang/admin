@@ -1,0 +1,16 @@
+info:
+    contact:
+        email: xixicat@gmail.com
+        phone: 0755-82890987
+
+spring:
+  profiles:
+    active: dev
+
+hystrix:
+  command:
+    default:
+      execution:
+        timeout:
+          enabled: false
+

@@ -1,0 +1,104 @@
+<div class="modal-header">
+    <h3 class="modal-title">设备信息</h3>
+</div>
+<div class="modal-body">
+    <form name="form" class="form-validation" novalidate>
+        <!-- alert -->
+        <div>
+            <toaster-container toaster-options="{'position-class': 'toast-top-right', 'close-button':true}"></toaster-container>
+        </div>
+
+        <div class="form-group row">
+            <label class="col-sm-3 control-label text-right">车架号码:</label>
+            <div class="col-sm-8">
+                <label class="col-sm-12 control-label text-left">{{device.vehicleIdentifyNum}}</label>
+            </div>
+        </div>
+
+        <div class="form-group row">
+            <label class="col-sm-3 control-label text-right">车牌号码:</label>
+            <div class="col-sm-8">
+                <label class="col-sm-12 control-label text-left">{{device.vehicleNum}}</label>
+            </div>
+        </div>
+
+
+        <div class="form-group row">
+            <label class="col-sm-3 control-label text-right">所属分组:</label>
+            <div class="col-sm-8">
+                <label class="col-sm-12 control-label text-left">{{selectVehicleGroupsNames}}</label>
+            </div>
+        </div>
+
+
+        <div class="form-group row">
+            <label class="col-sm-3 control-label text-right">设备类型:</label>
+            <div class="col-sm-8">
+                <label class="col-sm-12 control-label text-left">{{device.deviceType.deviceTypeName}}</label>
+            </div>
+        </div>
+
+
+        <div class="form-group row">
+            <label class="col-sm-3 control-label text-right">SN号:</label>
+            <div class="col-sm-8">
+                <label class="col-sm-12 control-label text-left">{{device.code}}</label>
+            </div>
+        </div>
+
+        <div class="form-group row">
+            <label class="col-sm-3 control-label text-right">SIM号码:</label>
+            <div class="col-sm-8">
+                <label class="col-sm-12 control-label text-left">{{device.simCode}}</label>
+            </div>
+        </div>
+
+        <div class="form-group row">
+            <label class="col-sm-3 control-label text-right">激活状态:</label>
+            <div class="col-sm-8">
+                <label class="col-sm-12 control-label text-left">{{device.status == 0 ? "待绑定" : device.status == 1 ? "激活成功" : device.status == 2 ? "激活失败" : device.status == 3 ? "拆除" :"" }}</label>
+            </div>
+        </div>
+
+        <div class="form-group row">
+            <label class="col-sm-3 control-label text-right">设备状态:</label>
+            <div class="col-sm-8">
+                <label class="col-sm-12 control-label text-left">{{device.deviceStatus == 0 ? "初始状态" : device.deviceStatus == 1 ? "正常" : device.deviceStatus == 2 ? "异常" : device.deviceStatus == 9 ? "单据作废" :"" }}</label>
+            </div>
+        </div>
+
+        <div class="form-group row">
+            <label class="col-sm-3 control-label text-right">申请编号:</label>
+            <div class="col-sm-8">
+                <label class="col-sm-12 control-label text-left">{{device.applyNum}}</label>
+            </div>
+        </div>
+
+
+        <div class="form-group row">
+            <label class="col-sm-3 control-label text-right">设备到期日期:</label>
+            <div class="col-sm-8">
+                <label class="col-sm-12 control-label text-left">{{device.endTime | date:'yyyy-MM-dd' }}</label>
+            </div>
+        </div>
+
+        <!--       <div class="form-group row">
+                   <label class="col-sm-3 control-label text-right">设备状态:</label>
+                   <div class="col-sm-8">
+                       <label class="col-sm-12 control-label text-left">{{device.status}}</label>
+                   </div>
+               </div>-->
+
+
+        <div class="form-group row">
+            <label class="col-sm-3 control-label text-right">备注:</label>
+            <div class="col-sm-8">
+                <label class="col-sm-12 control-label text-left">{{device.remark}}</label>
+            </div>
+        </div>
+
+    </form>
+</div>
+<div class="modal-footer ng-scope">
+    <button class="btn btn-default" ng-click="close()">关闭</button>
+</div>

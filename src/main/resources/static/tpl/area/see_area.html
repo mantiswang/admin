@@ -1,0 +1,57 @@
+<div class="wrapper-md"  ng-controller="seeAreaController">
+    <toaster-container toaster-options="{'position-class': 'toast-top-right', 'close-button':true}"></toaster-container>
+    <form name="form"  novalidate>
+        <div class="row">
+            <div class="col-lg-2 col-md-2 col-sm-2 m-b">
+                区域名称：
+            </div>
+            <div class="col-lg-10 col-md-10 col-sm-10 m-b">
+                {{areaDto.area.areaName}}
+            </div>
+            <div class="col-lg-2 col-md-2 col-sm-2 m-b">
+                区域备注：
+            </div>
+            <div class="col-lg-10 col-md-10 col-sm-10 m-b">
+                {{areaDto.area.remark}} &nbsp;
+            </div>
+            <div class="col-lg-2 col-md-2 col-sm-2 m-b">
+                区域类型：
+            </div>
+            <div class="col-lg-10 col-md-10 col-sm-10 m-b" ng-if="areaDto.flag=='0'" >
+                不可进入
+            </div>
+            <div class="col-lg-10 col-md-10 col-sm-10 m-b" ng-if="areaDto.flag=='1'" >
+                不可出围
+            </div>
+
+
+            <div class="col-lg-2 col-md-2 col-sm-2 m-b">
+                区域范围：
+            </div>
+            <div class="col-lg-10 col-md-10 col-sm-10 m-b">
+                <div id="allmap" style="width:640px;height:480px"></div>
+            </div>
+            <div class="col-lg-2 col-md-2 col-sm-2 m-b">
+                车辆列表：
+            </div>
+            <div class="col-lg-10 col-md-10 col-sm-10 m-b">
+
+            </div>
+
+
+        </div>
+
+
+        <div class="table-responsive">
+            <div id="tableSize" class="setTableDivClass" ng-grid="gridMonitorlist" style="height:300px;font-size: 9px;background-color:#fff;"></div>
+        </div>
+        <div class="row" style="margin-top: 10px;">
+            <div class="col-lg-2 col-md-2 col-sm-2 m-b">
+                <button class="btn btn-success" ng-click="goback()">返回</button>
+            </div>
+            <div class="col-lg-10 col-md-10 col-sm-10 m-b">
+
+            </div>
+        </div>
+    </form>
+</div>
