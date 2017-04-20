@@ -1,9 +1,9 @@
 /**
- * Created by qiaohao on 2016/12/6.
+ * Created by ywang on 2017/4/20.
  */
 'use strict';
 
-app.controller('customerListController', ['$scope', '$http', '$modal', 'toaster', function ($scope, $http, $modal, toaster) {
+app.controller('companyListController', ['$scope', '$http', '$modal', 'toaster', function ($scope, $http, $modal, toaster) {
     $scope.name="";
     $scope.organizeNum="";
     $scope.represent="";
@@ -48,7 +48,7 @@ app.controller('customerListController', ['$scope', '$http', '$modal', 'toaster'
         pagingOptions: $scope.pagingOptions,
         columnDefs: [
 
-            { field: 'name', displayName: '企业名称', width:'200px' },
+            { field: 'name', displayName: '公司名称', width:'200px' },
             { field: 'organizeNum', displayName: '组织机构编号', width:'200px' },
             { field: 'represent', displayName: '法人代表', width:'200px' },
             { field: 'contacts', displayName: '企业联系人', width:'200px' },
@@ -63,7 +63,7 @@ app.controller('customerListController', ['$scope', '$http', '$modal', 'toaster'
 
 
 
-        var url = '/customers?page=' + page + '&size=' + pageSize
+        var url = '/company?page=' + page + '&size=' + pageSize
             +'&name=' +$scope.name
             ;
         if($scope.organizeNum != "")
@@ -112,10 +112,10 @@ app.controller('customerListController', ['$scope', '$http', '$modal', 'toaster'
     }
 
 
-    $scope.createCustomer = function(){
+    $scope.createCompany = function(){
         var rtn = $modal.open({
-            templateUrl: 'tpl/customer/create_village.html',
-            controller: 'createCustomerController',
+            templateUrl: 'tpl/company/create_village.html',
+            controller: 'createCompanyController',
             resolve:{
             }
         });
@@ -131,8 +131,8 @@ app.controller('customerListController', ['$scope', '$http', '$modal', 'toaster'
 
     $scope.seeRowIndex = function(entity){
         var rtn = $modal.open({
-            templateUrl: 'tpl/customer/see_village.html',
-            controller: 'seeCustomerController',
+            templateUrl: 'tpl/company/see_village.html',
+            controller: 'seeCompanyController',
             resolve:{
                 customer : function (){ return entity }
             }
@@ -148,8 +148,8 @@ app.controller('customerListController', ['$scope', '$http', '$modal', 'toaster'
     $scope.editRowIndex = function(entity){
         var id = this.row.entity.id;
         var rtn = $modal.open({
-            templateUrl: 'tpl/customer/update_village.html',
-            controller: 'updateCustomerController',
+            templateUrl: 'tpl/company/update_village.html',
+            controller: 'updateCompanyController',
             resolve:{
                 customerId:function(){return id;}
             }
@@ -166,7 +166,7 @@ app.controller('customerListController', ['$scope', '$http', '$modal', 'toaster'
 
 
     $scope.removeRowIndex = function(entity){
-        $http.delete('customers/'+this.row.entity.id).success(function(data) {
+        $http.delete('company/'+this.row.entity.id).success(function(data) {
             if(data.status == 'SUCCESS'){
                 $scope.pop('success','','删除成功');
                 $scope.$emit("BUSY");

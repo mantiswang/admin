@@ -2,12 +2,15 @@ package com.linda.control.service.impl;
 
 import com.linda.control.dao.CompanyRepository;
 import com.linda.control.dao.SysUserRepository;
+import com.linda.control.dao.VillageRepository;
 import com.linda.control.domain.Company;
 import com.linda.control.domain.SysUser;
+import com.linda.control.domain.Village;
 import com.linda.control.dto.message.Message;
 import com.linda.control.dto.message.MessageType;
 import com.linda.control.service.CompanyService;
 import com.linda.control.service.SysRoleService;
+import com.linda.control.service.VillageService;
 import com.linda.control.utils.state.UserType;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Example;
@@ -25,9 +28,9 @@ import org.springframework.transaction.annotation.Transactional;
  * Created by ywang on 2017/4/19.
  */
 @Service
-public class CompanyServiceImpl implements CompanyService{
+public class VillageServiceImpl implements VillageService {
   @Autowired
-  private CompanyRepository companyRepository;
+  private VillageRepository villageRepository;
 
   @Autowired
   private SysUserRepository sysUserRepository;
@@ -45,11 +48,11 @@ public class CompanyServiceImpl implements CompanyService{
    * @param size
    * @return
    */
-  public ResponseEntity<Message> findByCompanyPage(Company company, int page,int size){
+  public ResponseEntity<Message> findByVillagePage(Village village, int page,int size){
     ExampleMatcher exampleMatcher = ExampleMatcher.matching().withStringMatcher(ExampleMatcher.StringMatcher.CONTAINING).withIgnoreNullValues();
-    Page customers = companyRepository.findAll(
-        Example.of(company, exampleMatcher), new PageRequest(page - 1, size,new Sort(Sort.Direction.DESC,"createTime")));
-    Message message = new Message(MessageType.MSG_TYPE_SUCCESS, customers);
+    Page villages = villageRepository.findAll(
+        Example.of(village, exampleMatcher), new PageRequest(page - 1, size,new Sort(Sort.Direction.DESC,"createTime")));
+    Message message = new Message(MessageType.MSG_TYPE_SUCCESS, villages);
     return new ResponseEntity<Message>(message, HttpStatus.OK);
   }
 
@@ -59,22 +62,16 @@ public class CompanyServiceImpl implements CompanyService{
    * @param customer
    * @return
    */
-  public ResponseEntity<Message> createCompany(Company company){
-    SysUser teamUser = sysUserRepository.findByUsername(company.getAdmin().getUsername());
+  public ResponseEntity<Message> createVillage(Village village){
+    SysUser teamUser = sysUserRepository.findByUsername(village.getAdmin().getUsername());
     if(teamUser!=null){
       return new ResponseEntity(new Message(MessageType.MSG_TYPE_ERROR,"用户名已经存在"), HttpStatus.OK);
     }
-//    //查询最后一个客户的code 并+1给新客户
-//    Company codeEndCompany = companyRepository.findTop1ByOrderByCodeDesc();
-//    Integer endCode = 1;
-//    if(codeEndCompany != null)
-//      endCode = codeEndCompany.getCode()+1;
-//    company.setCode(endCode);
-    company.getAdmin().setUserType(UserType.FIRST_ADMIN.value());
-    company.getAdmin().setPassword(passwordEncoder.encode(company.getAdmin().getPassword()));
+    village.getAdmin().setUserType(UserType.FIRST_ADMIN.value());
+    village.getAdmin().setPassword(passwordEncoder.encode(village.getAdmin().getPassword()));
 //    company.getAdmin().setCustomer(company);
-    company.getAdmin().setRoles(sysRoleService.getOneAdminRole());
-    companyRepository.save(company);
+    village.getAdmin().setRoles(sysRoleService.getOneAdminRole());
+    villageRepository.save(village);
     return new ResponseEntity<Message>(new Message(MessageType.MSG_TYPE_SUCCESS), HttpStatus.OK);
   }
 
@@ -83,9 +80,9 @@ public class CompanyServiceImpl implements CompanyService{
    * @param companyId
    * @return
    */
-  public ResponseEntity<Message> getCompany(Long companyId){
-    Company company = companyRepository.findById(companyId);
-    return new ResponseEntity<Message>(new Message(MessageType.MSG_TYPE_SUCCESS,company), HttpStatus.OK);
+  public ResponseEntity<Message> getVillage(Long villageId){
+    Village village = villageRepository.findById(villageId);
+    return new ResponseEntity<Message>(new Message(MessageType.MSG_TYPE_SUCCESS,village), HttpStatus.OK);
   }
 
   /**
@@ -93,14 +90,14 @@ public class CompanyServiceImpl implements CompanyService{
    * @param company
    * @return
    */
-  public ResponseEntity<Message> updateCompany(Company company){
-    Company tempCompany = companyRepository.findById(company.getId());
+  public ResponseEntity<Message> updateVillage(Village village){
+    Village tempVillage = villageRepository.findById(village.getId());
     /**
      * 这里不做赋值  会导致用户对应的customer_id丢失
      */
-    if(tempCompany != null)
-      company.setAdmin(tempCompany.getAdmin());
-    companyRepository.save(company);
+    if(tempVillage != null)
+      village.setAdmin(tempVillage.getAdmin());
+    villageRepository.save(tempVillage);
     return new ResponseEntity<Message>(new Message(MessageType.MSG_TYPE_SUCCESS), HttpStatus.OK);
   }
 
@@ -110,11 +107,11 @@ public class CompanyServiceImpl implements CompanyService{
    * @return
    */
   @Transactional
-  public ResponseEntity<Message> deleteCompany(Long id){
-    Company company = companyRepository.findById(id);
+  public ResponseEntity<Message> deleteVillage(Long id){
+    Village village = villageRepository.findById(id);
 //    company.getAdmin().setCustomer(null);
-    sysUserRepository.delete(company.getAdmin());
-    companyRepository.delete(company);
+    sysUserRepository.delete(village.getAdmin());
+    villageRepository.delete(village);
     return new ResponseEntity<Message>(new Message(MessageType.MSG_TYPE_SUCCESS), HttpStatus.OK);
   }
 }

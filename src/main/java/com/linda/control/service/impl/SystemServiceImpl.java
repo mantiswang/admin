@@ -59,7 +59,7 @@ public class SystemServiceImpl implements SystemService {
         if(UserStatus.DISABLE.value().toString().equals(sysUser.getUserStatus())){
             return new ResponseEntity<Message>(new Message(MessageType.MSG_TYPE_ERROR,"您的账户已被禁用,请联系管理员"), HttpStatus.OK);
         }
-        sysUser.setCustomer(customerRepository.findByAdmin(sysUser));
+//        sysUser.setCustomer(customerRepository.findByAdmin(sysUser));
         List<SysResource> sysResources = getUserResources(sysUser.getRoles());
         UserDto userDto = new UserDto(sysUser, sysResources);
         return new ResponseEntity<Message>(new Message(MessageType.MSG_TYPE_SUCCESS, userDto), HttpStatus.OK);

@@ -1,25 +1,15 @@
 package com.linda.control.config;
 
-import com.linda.control.domain.SimCard;
-import com.linda.control.dto.batch.SimCardDto;
-import com.linda.control.dto.installperson.InstallPersonDto;
 import javax.sql.DataSource;
-import org.springframework.batch.core.Job;
-import org.springframework.batch.core.Step;
 import org.springframework.batch.core.configuration.JobRegistry;
 import org.springframework.batch.core.configuration.annotation.EnableBatchProcessing;
-import org.springframework.batch.core.configuration.annotation.JobBuilderFactory;
-import org.springframework.batch.core.configuration.annotation.StepBuilderFactory;
 import org.springframework.batch.core.configuration.annotation.StepScope;
 import org.springframework.batch.core.configuration.support.JobRegistryBeanPostProcessor;
 import org.springframework.batch.core.explore.JobExplorer;
 import org.springframework.batch.core.explore.support.MapJobExplorerFactoryBean;
-import org.springframework.batch.core.launch.support.RunIdIncrementer;
 import org.springframework.batch.core.launch.support.SimpleJobLauncher;
 import org.springframework.batch.core.repository.JobRepository;
 import org.springframework.batch.core.repository.support.MapJobRepositoryFactoryBean;
-import org.springframework.batch.item.ItemProcessor;
-import org.springframework.batch.item.ItemReader;
 import org.springframework.batch.item.ItemWriter;
 import org.springframework.batch.item.database.BeanPropertyItemSqlParameterSourceProvider;
 import org.springframework.batch.item.database.JdbcBatchItemWriter;
@@ -66,19 +56,6 @@ public class ExcelBatchConfig {
 
     @Bean
     @StepScope
-    public ItemProcessor processor(@Value("#{jobParameters['targetType']}" )String targetType) throws Exception{
-        if(Class.forName(targetType) == SimCardDto.class)
-            return new com.linda.control.config.SimCardItemProcessor();
-        else if(Class.forName(targetType) == InstallPersonDto.class)
-            return new com.linda.control.config.InstallPersonProcessor();
-        else
-            return null;
-    }
-
-
-
-    @Bean
-    @StepScope
     public RowSetFactory rowSetFactory(){
         DefaultRowSetFactory rowSetFactory =  new DefaultRowSetFactory();
         RowNumberColumnNameExtractor columnNameExtractor = new RowNumberColumnNameExtractor();
@@ -109,35 +86,6 @@ public class ExcelBatchConfig {
         return writer;
     }
 
-
-    @Bean
-    public Job importSimCardJob(JobBuilderFactory jobs, Step s1) {
-        return jobs.get("importSimCardJob")
-                .incrementer(new RunIdIncrementer())
-                .flow(s1)
-                .end()
-                .build();
-    }
-    @Bean
-    public Job importInstallPersonJob(JobBuilderFactory jobs, Step s2) {
-        return jobs.get("importInstallPersonJob")
-                .incrementer(new RunIdIncrementer())
-                .flow(s2)
-                .end()
-                .build();
-    }
-
-    @Bean
-    public Step step1(StepBuilderFactory stepBuilderFactory, ItemReader reader,ItemProcessor processor,
-                      ItemWriter writer) {
-
-        return stepBuilderFactory.get("step1")
-                .<SimCard, SimCard>chunk(5000)
-                .reader(reader)
-                .processor(processor)
-                .writer(writer)
-                .build();
-    }
 
     @Bean
     public JobExplorer jobExplorer() throws Exception {

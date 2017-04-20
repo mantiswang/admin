@@ -1,12 +1,11 @@
 package com.linda.control.dto.user;
 
-import com.linda.control.domain.Customer;
+import com.linda.control.domain.Village;
 import com.linda.control.domain.SysResource;
 import com.linda.control.domain.SysRole;
 import com.linda.control.domain.SysUser;
-import lombok.Data;
-
 import java.util.List;
+import lombok.Data;
 
 /**
  * Created by PengChao on 2016/11/1.
@@ -21,7 +20,7 @@ public class UserDto {
 
     private List<SysResource> sysResources;
 
-    private Customer customer;
+    private Village village;
 
     private String isModifyPassWord;
 
@@ -31,7 +30,7 @@ public class UserDto {
         this.id = sysUser.getId();
         this.username = sysUser.getUsername();
         this.sysResources = sysResources;
-        this.customer = sysUser.getCustomer();
+        this.village = sysUser.getVillage();
         this.isModifyPassWord = sysUser.getIsModifyPassWord();
     }
 
@@ -39,7 +38,7 @@ public class UserDto {
         this.id = sysUser.getId();
         this.username = sysUser.getUsername();
         this.roles = sysUser.getRoles();
-        this.customer = sysUser.getCustomer();
+        this.village = sysUser.getVillage();
         this.isModifyPassWord = sysUser.getIsModifyPassWord();
     }
 
@@ -75,7 +74,7 @@ public class UserDto {
         this.roles = roles;
     }
 
-    public Customer getCustomer(){
-        return this.customer;
+    public Village getVillage(){
+        return this.village;
     }
 }

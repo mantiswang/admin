@@ -17,8 +17,8 @@ import org.springframework.web.bind.annotation.RestController;
  * Created by ywang on 2017/4/19.
  */
 @RestController
-@RequestMapping("company")
-public class CompanyController {
+@RequestMapping("village")
+public class VillageController {
 
   @Autowired
   private CompanyService companyService;

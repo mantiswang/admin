@@ -1,7 +1,14 @@
 package com.linda.control.domain;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import java.io.Serializable;
+import java.util.Date;
+import javax.persistence.CascadeType;
+import javax.persistence.Entity;
+import javax.persistence.EntityListeners;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
+import javax.persistence.OneToOne;
 import lombok.Data;
 import org.hibernate.annotations.GenericGenerator;
 import org.springframework.data.annotation.CreatedBy;
@@ -9,11 +16,6 @@ import org.springframework.data.annotation.CreatedDate;
 import org.springframework.data.annotation.LastModifiedBy;
 import org.springframework.data.annotation.LastModifiedDate;
 import org.springframework.data.jpa.domain.support.AuditingEntityListener;
-
-import javax.persistence.*;
-import java.io.Serializable;
-import java.util.Date;
-import java.util.List;
 
 /**
  * Created by qiaohao on 2016/12/6.
@@ -57,15 +59,9 @@ public class Customer implements Serializable {
     @OneToOne(cascade = CascadeType.ALL)
     private SysUser admin;//管理员
 
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "customer")
-    @JsonIgnore
-    private List<SysUser> sysUsers;//属于客户的用户账号
-
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "customer")
-    @JsonIgnore
-
-    private List<Device>  devices;//设备列表
-
+//    @OneToMany(cascade = CascadeType.ALL, mappedBy = "customer")
+//    @JsonIgnore
+//    private List<SysUser> sysUsers;//属于客户的用户账号
 
     @CreatedDate
     private Date createTime;

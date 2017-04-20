@@ -47,7 +47,7 @@ public class SysUser implements UserDetails {
 
     private String fullName;//用户姓名
 
-    private Integer userType; //0.超级管理员 1.一级管理员 2.普通用户
+    private Integer userType; //0.超级管理员 1.一级管理员 2.物业人员 3.普通用户
 
     private String phone;//手机号
 
@@ -59,7 +59,13 @@ public class SysUser implements UserDetails {
 
     @JsonIgnore
     @ManyToOne
-    private Customer customer;//所属客户
+    private Village village; //subdistrict;//普通用户所属小区
+
+//    @JsonIgnore
+//    @ManyToOne
+//    private Company cmopany;//物业人员所属物业公司
+
+
 
     @Column(columnDefinition = "varchar(1) default '1' ")
     private String userStatus;//用户状态 0.停用 1.启用

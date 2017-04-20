@@ -59,9 +59,9 @@ public class SysUserServiceImpl implements SysUserService {
             return new ResponseEntity<Message>(new Message(MessageType.MSG_TYPE_SUCCESS, customers), HttpStatus.OK);
         }else if(loginUser.getUserType() == UserType.FIRST_ADMIN.value()){  //一级管理员
             sysUser.setUserType(UserType.ORDINARY_USER.value());
-            Customer customer = new Customer();
-            customer.setId(loginUser.getCustomer().getId());
-            sysUser.setCustomer(customer);
+//            Customer customer = new Customer();
+//            customer.setId(loginUser.getCustomer().getId());
+//            sysUser.setCustomer(customer);
             ExampleMatcher exampleMatcher = ExampleMatcher.matching().withStringMatcher(ExampleMatcher.StringMatcher.CONTAINING).withIgnoreNullValues();
             Page customers = sysUserRepository.findAll(Example.of(sysUser, exampleMatcher), new PageRequest(page - 1, size,new Sort(Sort.Direction.DESC,"createTime")));
             return new ResponseEntity<Message>(new Message(MessageType.MSG_TYPE_SUCCESS, customers), HttpStatus.OK);
@@ -77,7 +77,7 @@ public class SysUserServiceImpl implements SysUserService {
      */
     public ResponseEntity<Message> updateSysUser(SysUser sysUser){
         SysUser temSysUser = sysUserRepository.findOne(sysUser.getId());
-        sysUser.setCustomer(temSysUser.getCustomer());
+//        sysUser.setCustomer(temSysUser.getCustomer());
         if(!temSysUser.getUserStatus().equals(sysUser.getUserStatus())){
             if(UserStatus.DISABLE.toString().equals(sysUser.getUserStatus())){
                 sysUser.setDisableTime(new Date());
@@ -114,7 +114,7 @@ public class SysUserServiceImpl implements SysUserService {
         if(sysUserRepository.findByUsername(sysUser.getUsername())!=null){
             return new ResponseEntity(new Message(MessageType.MSG_TYPE_ERROR,"用户名已经存在"), HttpStatus.OK);
         }else{
-            sysUser.setCustomer(sysLoginUser.getCustomer());
+//            sysUser.setCustomer(sysLoginUser.getCustomer());
             sysUser.setPassword(passwordEncoder.encode(sysUser.getPassword()));
             sysUser.setUserType(UserType.ORDINARY_USER.value());
             sysUserRepository.save(sysUser);

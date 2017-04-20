@@ -3,9 +3,6 @@ package com.linda.control.config;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import java.util.concurrent.Executor;
-import me.chanjar.weixin.mp.api.WxMpInMemoryConfigStorage;
-import me.chanjar.weixin.mp.api.WxMpService;
-import me.chanjar.weixin.mp.api.impl.WxMpServiceImpl;
 import org.springframework.aop.interceptor.AsyncUncaughtExceptionHandler;
 import org.springframework.aop.interceptor.SimpleAsyncUncaughtExceptionHandler;
 import org.springframework.context.annotation.Bean;
@@ -43,16 +40,16 @@ public class WebConfig extends WebMvcConfigurerAdapter implements AsyncConfigure
     @Override
     public void addViewControllers(ViewControllerRegistry registry) {
     }
-    @Bean
-    public WxMpService wxMpService(){
-        WxMpInMemoryConfigStorage config = new WxMpInMemoryConfigStorage();
-        config.setAppId(com.linda.wechat.utils.contst.GlobalConsts.WeChat.APPID.value());
-        config.setSecret(com.linda.wechat.utils.contst.GlobalConsts.WeChat.APPSECRET.value());
-        config.setToken(com.linda.wechat.utils.contst.GlobalConsts.WeChat.TOKEN.value());
-        WxMpService wxMpService = new WxMpServiceImpl();
-        wxMpService.setWxMpConfigStorage(config);
-        return wxMpService;
-    }
+//    @Bean
+//    public WxMpService wxMpService(){
+//        WxMpInMemoryConfigStorage config = new WxMpInMemoryConfigStorage();
+//        config.setAppId(com.linda.wechat.utils.contst.GlobalConsts.WeChat.APPID.value());
+//        config.setSecret(com.linda.wechat.utils.contst.GlobalConsts.WeChat.APPSECRET.value());
+//        config.setToken(com.linda.wechat.utils.contst.GlobalConsts.WeChat.TOKEN.value());
+//        WxMpService wxMpService = new WxMpServiceImpl();
+//        wxMpService.setWxMpConfigStorage(config);
+//        return wxMpService;
+//    }
 
     @Bean
     public EtonenetParam etonenetParam(){

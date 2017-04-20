@@ -61,15 +61,9 @@ public class CustomerServiceImpl implements CustomerService {
         if(teamUser!=null){
             return new ResponseEntity(new Message(MessageType.MSG_TYPE_ERROR,"用户名已经存在"), HttpStatus.OK);
         }
-        //查询最后一个客户的code 并+1给新客户
-        Customer codeEndCustomer = customerRepository.findTop1ByOrderByCodeDesc();
-        Integer endCode = 1;
-        if(codeEndCustomer != null)
-            endCode = codeEndCustomer.getCode()+1;
-        customer.setCode(endCode);
+
         customer.getAdmin().setUserType(UserType.FIRST_ADMIN.value());
         customer.getAdmin().setPassword(passwordEncoder.encode(customer.getAdmin().getPassword()));
-        customer.getAdmin().setCustomer(customer);
         customer.getAdmin().setRoles(sysRoleService.getOneAdminRole());
         customerRepository.save(customer);
         return new ResponseEntity<Message>(new Message(MessageType.MSG_TYPE_SUCCESS), HttpStatus.OK);
@@ -109,7 +103,6 @@ public class CustomerServiceImpl implements CustomerService {
     @Transactional
     public ResponseEntity<Message> deleteCustomer(String id){
         Customer customer = customerRepository.findOne(id);
-        customer.getAdmin().setCustomer(null);
         sysUserRepository.delete(customer.getAdmin());
         customerRepository.delete(customer);
         return new ResponseEntity<Message>(new Message(MessageType.MSG_TYPE_SUCCESS), HttpStatus.OK);
