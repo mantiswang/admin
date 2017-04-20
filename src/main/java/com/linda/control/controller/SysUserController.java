@@ -23,7 +23,7 @@ public class SysUserController {
 
     /**
      * 分页获得用户列表
-     * @return`
+     * @return
      */
     @RequestMapping(method = RequestMethod.GET)
     public ResponseEntity<Message> getSysUserList(SysUser sysUser,int page, int size,@AuthenticationPrincipal SysUser loginUser){

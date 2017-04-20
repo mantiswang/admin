@@ -376,12 +376,12 @@ angular.module('app')
                     //     templateUrl: "tpl/distanceReport/distance_report.html",
                     //     resolve: load(["toaster", "ngGrid", "js/controllers/distanceReport/distanceReport.js"])
                     // })
-                    // //行驶报表
-                    // .state("app.runReport", {
-                    //     url: "/runReport",
-                    //     templateUrl: "tpl/runReport/run_position_list.html",
-                    //     resolve: load(["toaster", "ngGrid", "js/controllers/runReport/runReportList.js"])
-                    // })
+                    //行驶报表
+                    .state("app.runReport", {
+                        url: "/runReport",
+                        templateUrl: "tpl/runReport/run_position_list.html",
+                        resolve: load(["toaster", "ngGrid", "js/controllers/runReport/runReportList.js"])
+                    })
                     // // 拆除报警报表
                     // .state("app.dismantleWarnReport", {
                     //     url: "/dismantleWarnReport",

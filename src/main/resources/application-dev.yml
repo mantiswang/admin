@@ -31,18 +31,18 @@ spring:
       enabled: false
 
 file:
-  importExcelService: http://192.168.1.124:8080/excel/
+  importExcelService: http://192.168.1.124:8088/excel/
   filePath: /Library/WebServer/Documents/device/
   deviceImgPath: /Users/qiaohao/Downloads/tomcat8/webapps/device/
   impExcelPath: /Users/qiaohao/Downloads/tomcat8/webapps/excel/
   androidFilePath: /Library/WebServer/Documents/android/
   corpInnerFilePath: /Library/WebServer/Documents/corpInnerFile/
-  requestFrontPath: http://localost/
+  requestFrontPath: http://192.168.1.124:8088/
   newsFilePath: /Library/WebServer/Documents/information/news/
-  requestNewsFilePath: http://localhost/information/news/
+  requestNewsFilePath: http://192.168.1.124:8088/information/news/
   companyFilePath: /Library/WebServer/Documents/information/companyFile/
-  requestCompanyFilePath: http://localhost/information/companyFile/
-  requestAndroidFilePath: http://localhost/android/
+  requestCompanyFilePath: http://192.168.1.124:8088/information/companyFile/
+  requestAndroidFilePath: http://192.168.1.124:8088/android/
 
 
 systemParam:

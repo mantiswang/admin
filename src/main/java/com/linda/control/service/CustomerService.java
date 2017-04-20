@@ -1,20 +1,10 @@
 package com.linda.control.service;
 
-import com.linda.control.dao.CustomerRepository;
-import com.linda.control.dao.SysUserRepository;
 import com.linda.control.domain.Customer;
-import com.linda.control.domain.SysUser;
 import com.linda.control.dto.message.Message;
-import com.linda.control.dto.message.MessageType;
-import com.linda.control.utils.CommonUtils;
-import com.linda.control.utils.state.UserType;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.domain.*;
-import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
-import org.springframework.transaction.annotation.Transactional;
+
 
 /**
  * Created by qiaohao on 2016/12/6.
