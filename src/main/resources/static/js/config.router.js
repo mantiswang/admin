@@ -12,24 +12,16 @@ angular.module('app')
                 $rootScope.$on('$locationChangeStart', locationChangeStart);
                 function locationChangeStart(event) {
                     var sourceList = $localStorage.permissionList;
+                    console.log($localStorage.permissionList);
                     if (sourceList != undefined && sourceList.length != 0) {
                         var newUrl = $location.url().substring(1).replace("/",".");
-                        if (newUrl.startsWith('app.msgList')) {
-                            newUrl = 'app.smsList';
-                        }
-                        if (newUrl.startsWith('app.area') && newUrl != "app.areaWarnReportHistory") {
-                            newUrl = 'app.area';
-                        }
-                        if (newUrl.startsWith('app.changePassword')) {
+
+                      if (newUrl.startsWith('app.changePassword')) {
                             if($localStorage.userinfo.isModifyPassWord == 0) {
                                 event.preventDefault();
                                 $state.go("access.signin");
                             }
-                        } else if (!contains(sourceList,newUrl) && !newUrl.startsWith('gps')
-                            && !newUrl.startsWith('access.positionReview')
-                            && !newUrl.startsWith('access.carTrack')
-                            && !newUrl.startsWith('access.tubaPositionReview')
-                            && !newUrl.startsWith('access.tubaCarTrack')) {
+                        } else if (!contains(sourceList,newUrl)) {
                             event.preventDefault();
                             $state.go("access.signin");
                         }
@@ -67,14 +59,14 @@ angular.module('app')
                     resolve: load(["toaster", "js/controllers/personalInfo/signin.js"])
                 })
                 //用户管理
-                .state("app.sysuser", {
+                .state("app.sysUser", {
                     url: "/sysuser",
                     templateUrl: "tpl/sysuser/sysuser_list.html",
-                    resolve: load(["toaster", "ngGrid", "js/controllers/sysuser/sysUserList.js" , "js/controllers/sysuser/createSysUser.js" , "js/controllers/sysuser/updateSysUser.js"  , "js/controllers/sysuser/updateSysUserPassword.js" ,"js/controllers/sysuser/seeSysUser.js" ,"js/controllers/tubaMonitor/selectVehicleGroupList.js" ])
+                    resolve: load(["toaster", "ngGrid", "js/controllers/sysuser/sysUserList.js" , "js/controllers/sysuser/createSysUser.js" , "js/controllers/sysuser/updateSysUser.js"  , "js/controllers/sysuser/updateSysUserPassword.js" ,"js/controllers/sysuser/seeSysUser.js" ])
                 })
 
                 //角色管理
-                .state("app.sysrole", {
+                .state("app.sysRole", {
                     url: "/sysrole",
                     templateUrl: "tpl/sysrole/sysRole_list.html",
                     resolve: load(["toaster", "ngGrid", "js/controllers/sysrole/sysRoleList.js" , "js/controllers/sysrole/createSysRole.js" , "js/controllers/sysrole/updateSysRole.js", "js/controllers/sysrole/seeSysRole.js" ])
@@ -85,68 +77,37 @@ angular.module('app')
                     templateUrl: "tpl/change_password.html",
                     resolve: load(["toaster", "js/controllers/personalInfo/changePassword.js"])
                 })
-                // 车辆监控
-                .state("app.monitor", {
-                    url: "/monitor",
-                    templateUrl: "tpl/monitor/car_monitor.html",
-                    resolve: load(["toaster",  "ngGrid", "js/controllers/monitor/carMonitorController.js" , "js/controllers/tubaMonitor/selectVehicleGroup.js","js/controllers/tubaMonitor/selectDevice.js","js/controllers/tubaMonitor/selectVehicleGroupList.js"])
+                //系统配置列表
+                .state("app.sysParam", {
+                    url: "/systemparam",
+                    templateUrl: "tpl/systemparam/system_param_list.html",
+                    resolve: load(["toaster", "ngGrid", "js/controllers/systemparam/systemParamList.js", "js/controllers/systemparam/createSystemParam.js" ,"js/controllers/systemparam/updateSystemParam.js","js/controllers/systemparam/seeSystemParam.js"])
+                })
+                //菜单管理
+                .state("app.sysRes", {
+                    url: "/sysResource",
+                    templateUrl: "tpl/sysresource/sysresource_list.html",
+                    resolve: load(["toaster", "ngGrid", "js/controllers/sysresource/sysResourceList.js" , "js/controllers/sysresource/createSysResource.js" , "js/controllers/sysresource/updateSysResource.js" ,"js/controllers/sysresource/seeSysResource.js" ])
+                })
+                // 客服管理
+                .state("app.serviceUser", {
+                    url: "/serviceUser",
+                    templateUrl: "tpl/serviceUser/service_user_list.html",
+                    resolve: load(["toaster", "ngGrid", "js/controllers/serviceUser/serviceUserList.js" , "js/controllers/serviceUser/createServiceUser.js", "js/controllers/sysuser/updateSysUserPassword.js" ])
                 })
 
-                // 图吧监控
-                .state("app.tubaMonitor",{
-                    url: "/tubaMonitor",
-                    templateUrl:"tpl/tubaMonitor/tuba_car_monitor.html",
-                    resolve: load(["toaster", "ngGrid","js/controllers/tubaMonitor/tubaCarMonitorController.js" , "js/controllers/tubaMonitor/selectVehicleGroup.js","js/controllers/tubaMonitor/selectDevice.js","js/controllers/tubaMonitor/selectVehicleGroupList.js"])
+                //小区
+                .state("app.village", {
+                  url: "/villageList",
+                  templateUrl: "tpl/village/village_list.html",
+                  resolve: load(["toaster", "ngGrid", "js/controllers/village/villageList.js", "js/controllers/company/createVillage.js", "js/controllers/company/seeVillage.js", "js/controllers/company/updateVillage.js"])
                 })
-
-                //客户管理
-                    .state("app.customer", {
-                        url: "/customer",
-                        templateUrl: "tpl/customer/village_list.html",
-                        resolve: load(["toaster", "ngGrid", "js/controllers/customer/villageList.js" , "js/controllers/customer/createVillage.js" , "js/controllers/customer/updateVillage.js" ,"js/controllers/customer/seeVillage.js" ])
-                    })
-                    //系统配置列表
-                    .state("app.systemparam", {
-                        url: "/systemparam",
-                        templateUrl: "tpl/systemparam/system_param_list.html",
-                        resolve: load(["toaster", "ngGrid", "js/controllers/systemparam/systemParamList.js", "js/controllers/systemparam/createSystemParam.js" ,"js/controllers/systemparam/updateSystemParam.js","js/controllers/systemparam/seeSystemParam.js"])
-                    })
-                    //菜单管理
-                    .state("app.sysResource", {
-                        url: "/sysResource",
-                        templateUrl: "tpl/sysresource/sysresource_list.html",
-                        resolve: load(["toaster", "ngGrid", "js/controllers/sysresource/sysResourceList.js" , "js/controllers/sysresource/createSysResource.js" , "js/controllers/sysresource/updateSysResource.js" ,"js/controllers/sysresource/seeSysResource.js" ])
-                    })
-                    // 客服管理
-                    .state("app.serviceUser", {
-                        url: "/serviceUser",
-                        templateUrl: "tpl/serviceUser/service_user_list.html",
-                        resolve: load(["toaster", "ngGrid", "js/controllers/serviceUser/serviceUserList.js" , "js/controllers/serviceUser/createServiceUser.js", "js/controllers/sysuser/updateSysUserPassword.js" ])
-                    })
-
-                    //gps menu
-                    .state('gps', {
-                        url: '/gps',
-                        template: '<div ui-view></div>'
-                    })
-                    .state('gps.signin', {
-                        url: '/signin',
-                        templateUrl: 'tpl/wechat/gps_signin.html',
-                        resolve: load( ['js/controllers/wechat/gpsSigninController.js'] )
-                    })
-
-                    //集团
-                    .state("app.villageList", {
-                      url: "/villageList",
-                      templateUrl: "tpl/village/village_list.html",
-                      resolve: load(["toaster", "ngGrid", "js/controllers/village/villageList.js"])
-                    })
-                    //公司
-                    .state("app.companyList", {
-                      url: "/companyList",
-                      templateUrl: "tpl/company/company_list.html",
-                      resolve: load(["toaster", "ngGrid", "js/controllers/company/companyList.js"])
-                    })
+                //物业
+                .state("app.company", {
+                  url: "/companyList",
+                  templateUrl: "tpl/company/company_list.html",
+                  resolve: load(["toaster", "ngGrid", "js/controllers/company/companyList.js", "js/controllers/company/createCompany.js", "js/controllers/company/seeCompany.js", "js/controllers/company/updateCompany.js"])
+                })
                 ;
           function load(srcs, callback) {
             return {

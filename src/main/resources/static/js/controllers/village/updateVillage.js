@@ -1,18 +1,24 @@
 /**
- * Created by qiaohao on 2016/12/6.
+ * Created by ywang on 2017/4/20.
  */
-app.controller('updateVehicleTypeController', ['$scope', '$http', '$modalInstance', 'vehicleTypeId', function ($scope, $http, $modalInstance,vehicleTypeId) {
+app.controller('updateVillageController', ['$scope', '$http', '$modalInstance', 'villageId', function ($scope, $http, $modalInstance,villageId) {
+
+
     function init(){
-        $http.get('vehicletypes/'+ vehicleTypeId).success(function(data){
-            $scope.vehicleType = data.data;
+        $http.get('village/'+ villageId).success(function(data){
+            $scope.village = data.data;
+
         })
     }
     init();
+
     /**
      * 保存客户信息
      */
     $scope.update = function () {
-        $http.put('vehicletypes/'+$scope.vehicleType.id, $scope.vehicleType).success(function (data) {
+
+        $scope.village.foundTime=$("#foundTime").val();
+        $http.put('village/'+$scope.village.id, $scope.village).success(function (data) {
             $scope.close('SUCCESS');
         })
     }

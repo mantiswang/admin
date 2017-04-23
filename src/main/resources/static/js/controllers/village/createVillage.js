@@ -1,12 +1,19 @@
 /**
- * Created by qiaohao on 2016/10/25.
+ * Created by ywang on 2017/4/20.
  */
-app.controller('createVehicleGroupController', ['$scope', '$http', '$modalInstance', function ($scope, $http, $modalInstance) {
+app.controller('createVillageController', ['$scope', '$http', '$modalInstance','toaster', function ($scope, $http, $modalInstance, toaster) {
 
+    $scope.pop = function(type,title,text){
+        toaster.pop(type,'',text);
+    };
 
+    /**
+     * 用户信息
+     */
     $scope.create = function () {
 
-        $http.post('vehiclegroups', $scope.vehicleGroup).success(function (data) {
+        $scope.village.foundTime=$("#foundTime").val();
+        $http.post('village', $scope.village).success(function (data) {
             if(data.status=="ERROR"){
                 $scope.pop('error', '', data.error);
             }else{

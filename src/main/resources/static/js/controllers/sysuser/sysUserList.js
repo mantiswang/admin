@@ -105,11 +105,11 @@ app.controller('sysUserListController', ['$scope', '$http', '$modal', 'toaster',
     init();
 
     $scope.createSysUser = function(){
-
-        if($scope.loginUser.userType == 0){
-            $scope.pop('error', '', '您不可以新增用户');
-            return;
-        }
+        //
+        // if($scope.loginUser.userType == 0){
+        //     $scope.pop('error', '', '您不可以新增用户');
+        //     return;
+        // }
 
         var rtn = $modal.open({
             templateUrl: 'tpl/sysuser/create_sysuser.html',

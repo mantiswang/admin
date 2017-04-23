@@ -4,8 +4,9 @@ app.controller('navController', ['$scope', '$localStorage','$filter', '$state', 
     if($localStorage.userinfo == undefined || $localStorage.userinfo == null){
         $state.go("access.signin");
     }
-    if($localStorage.userinfo !=null && $localStorage.userinfo.customer != null)
-        $rootScope.customerName = $localStorage.userinfo.customer.name + " " + $localStorage.userinfo.username;
+    console.log($localStorage.userinfo.sysResources);
+    if($localStorage.userinfo !=null && $localStorage.userinfo.village != null)
+        $rootScope.customerName = $localStorage.userinfo.village.name + " " + $localStorage.userinfo.username;
     else
         $rootScope.customerName = $localStorage.userinfo.username;
     $scope.navIsShow = ($localStorage.userinfo.username == 'admin');

@@ -1,11 +1,16 @@
 /**
- * Created by qiaohao on 2016/12/6.
+ * Created by ywang on 2017/4/20.
  */
 'use strict';
 
-app.controller('vehicleGroupListController', ['$scope', '$http', '$modal', 'toaster', function ($scope, $http, $modal, toaster) {
-
+app.controller('villageListController', ['$scope', '$http', '$modal', 'toaster', function ($scope, $http, $modal, toaster) {
     $scope.name="";
+    $scope.organizeNum="";
+    $scope.represent="";
+    $scope.contacts="";
+    $scope.phone="";
+    $scope.dutyPhone="";
+
 
     //ngGrid初始化数据
     $scope.filterOptions = {
@@ -43,16 +48,35 @@ app.controller('vehicleGroupListController', ['$scope', '$http', '$modal', 'toas
         pagingOptions: $scope.pagingOptions,
         columnDefs: [
 
-            { field: 'name', displayName: '车辆分组名称', width:'200px' },
-            { field: 'customer.name', displayName: '所属客户', width:'200px' },
-            { field: 'remark', displayName: '备注', width:'200px' },
+            { field: 'name', displayName: '公司名称', width:'200px' },
+            { field: 'organizeNum', displayName: '组织机构编号', width:'200px' },
+            { field: 'represent', displayName: '法人代表', width:'200px' },
+            { field: 'contacts', displayName: '企业联系人', width:'200px' },
+            { field: 'phone', displayName: '企业联系电话', width:'200px' },
+            { field: 'address', displayName: '办公地址', width:'200px' },
             { field: 'remove', displayName: '操作', width: "400px", cellTemplate: '<a ng-click="editRowIndex(row.entity)" title="编辑" class="btn btn-default m-l-xs" style="margin-top: 2px"><i class="fa fa-pencil"></i></a>' +
             '<a mwl-confirm message="确定删除?" title="删除" confirm-text="确定" cancel-text="取消" confirm-button-type="danger" on-confirm="removeRowIndex(row.entity)" class="btn btn-default m-l-xs" style="margin-top: 2px"><i class="fa fa-times"></i></a>' +
             '<a ng-click="seeRowIndex(row.entity)" title="详情" class="btn btn-default m-l-xs" style="margin-top: 2px"><i class="fa fa-info-circle"></i></a>' }
         ]
     };
     $scope.getPagedDataAsync = function (pageSize, page, searchText) {
-        var url = '/vehiclegroups?page=' + page + '&size=' + pageSize  +'&name=' +$scope.name;
+
+
+
+        var url = '/village?page=' + page + '&size=' + pageSize
+            +'&name=' +$scope.name
+            ;
+        if($scope.organizeNum != "")
+            url+="&organizeNum="+$scope.organizeNum;
+        if($scope.represent !="" )
+            url+="&represent="+$scope.represent;
+        if($scope.contacts !="" )
+            url+="&contacts="+$scope.contacts;
+        if($scope.phone !="" )
+            url+="&contacts="+$scope.phone;
+        if($scope.dutyPhone !="" )
+            url+="&contacts="+$scope.dutyPhone;
+
         $http.get(url).success(function (pagedata) {
             $scope.$emit("NOTBUSY");
             $scope.codes = pagedata.data.content;
@@ -88,16 +112,16 @@ app.controller('vehicleGroupListController', ['$scope', '$http', '$modal', 'toas
     }
 
 
-    $scope.createVehicleGroup = function(){
+    $scope.createVillage = function(){
         var rtn = $modal.open({
-            templateUrl: 'tpl/vehiclegroup/create_vehiclegroup.html',
-            controller: 'createVehicleGroupController',
+            templateUrl: 'tpl/village/create_village.html',
+            controller: 'createVillageController',
             resolve:{
             }
         });
         rtn.result.then(function (status) {
             if(status == 'SUCCESS') {
-                $scope.pop('success', '', '新增车辆类型信息成功');
+                $scope.pop('success', '', '新增客户信息成功');
                 $scope.$emit("BUSY");
                 $scope.getPagedDataAsync($scope.pagingOptions.pageSize, $scope.pagingOptions.currentPage);
             }
@@ -107,10 +131,10 @@ app.controller('vehicleGroupListController', ['$scope', '$http', '$modal', 'toas
 
     $scope.seeRowIndex = function(entity){
         var rtn = $modal.open({
-            templateUrl: 'tpl/vehiclegroup/see_vehiclegroup.html',
-            controller: 'seeVehicleGroupController',
+            templateUrl: 'tpl/village/see_village.html',
+            controller: 'seeVillageController',
             resolve:{
-                vehicleGroup : function (){ return entity }
+              village : function (){ return entity }
             }
         });
         rtn.result.then(function (status) {
@@ -124,15 +148,15 @@ app.controller('vehicleGroupListController', ['$scope', '$http', '$modal', 'toas
     $scope.editRowIndex = function(entity){
         var id = this.row.entity.id;
         var rtn = $modal.open({
-            templateUrl: 'tpl/vehiclegroup/update_vehiclegroup.html',
-            controller: 'updateVehicleGroupController',
+            templateUrl: 'tpl/village/update_village.html',
+            controller: 'updateVillageController',
             resolve:{
-                vehicleGroupId:function(){return id;}
+              villageId:function(){return id;}
             }
         });
         rtn.result.then(function (status) {
             if(status == 'SUCCESS') {
-                $scope.pop('success', '', '修改车辆类型信息成功');
+                $scope.pop('success', '', '修改客户信息成功');
                 $scope.$emit("BUSY");
                 $scope.getPagedDataAsync($scope.pagingOptions.pageSize, $scope.pagingOptions.currentPage);
             }
@@ -142,7 +166,7 @@ app.controller('vehicleGroupListController', ['$scope', '$http', '$modal', 'toas
 
 
     $scope.removeRowIndex = function(entity){
-        $http.delete('vehiclegroups/'+this.row.entity.id).success(function(data) {
+        $http.delete('village/'+this.row.entity.id).success(function(data) {
             if(data.status == 'SUCCESS'){
                 $scope.pop('success','','删除成功');
                 $scope.$emit("BUSY");

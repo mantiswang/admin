@@ -1,0 +1,103 @@
+<div class="modal-header">
+    <h3 class="modal-title">客户信息</h3>
+</div>
+<div class="modal-body">
+    <form name="form" class="form-validation" novalidate>
+        <!-- alert -->
+        <div>
+            <toaster-container toaster-options="{'position-class': 'toast-top-right', 'close-button':true}"></toaster-container>
+        </div>
+        <!-- / alert -->
+        <div class="form-group row">
+            <label class="col-sm-3 control-label text-right">企业名称:</label>
+            <div class="col-sm-8">
+                <label class="col-sm-12 control-label text-left">{{village.name}}</label>
+            </div>
+        </div>
+
+        <div class="form-group row">
+            <label class="col-sm-3 control-label text-right">管理员账号:</label>
+            <div class="col-sm-8">
+                <label class="col-sm-12 control-label text-left">{{village.admin.username}}</label>
+            </div>
+        </div>
+
+
+        <div class="form-group row">
+            <label class="col-sm-3 control-label text-right">组织机构编号:</label>
+            <div class="col-sm-8">
+                <label class="col-sm-12 control-label text-left">{{village.organizeNum}}</label>
+            </div>
+        </div>
+
+        <div class="form-group row">
+            <label class="col-sm-3 control-label text-right">注册成立日期:</label>
+            <div class="col-sm-8">
+                <label class="col-sm-12 control-label text-left">{{village.foundTime | date:'yyyy-MM-dd' }}</label>
+            </div>
+        </div>
+
+        <div class="form-group row">
+            <label class="col-sm-3 control-label text-right">法人代表:</label>
+            <div class="col-sm-8">
+                <label class="col-sm-12 control-label text-left">{{village.represent}}</label>
+            </div>
+        </div>
+
+        <div class="form-group row">
+            <label class="col-sm-3 control-label text-right">企业联系人:</label>
+            <div class="col-sm-8">
+                <label class="col-sm-12 control-label text-left">{{village.contacts}}</label>
+            </div>
+        </div>
+
+
+        <div class="form-group row">
+            <label class="col-sm-3 control-label text-right">企业联系电话:</label>
+            <div class="col-sm-8">
+                <label class="col-sm-12 control-label text-left">{{village.phone}}</label>
+            </div>
+        </div>
+
+
+
+        <div class="form-group row">
+            <label class="col-sm-3 control-label text-right">24小时值班电话:</label>
+            <div class="col-sm-8">
+                <label class="col-sm-12 control-label text-left">{{village.dutyPhone}}</label>
+            </div>
+        </div>
+
+        <div class="form-group row">
+            <label class="col-sm-3 control-label text-right">企业员工数量:</label>
+            <div class="col-sm-8">
+                <label class="col-sm-12 control-label text-left">{{village.staffNum}}</label>
+            </div>
+        </div>
+
+        <div class="form-group row">
+            <label class="col-sm-3 control-label text-right">办公地址:</label>
+            <div class="col-sm-8">
+                <label class="col-sm-12 control-label text-left">{{village.address}}</label>
+            </div>
+        </div>
+
+        <div class="form-group row">
+            <label class="col-sm-3 control-label text-right">注册地点:</label>
+            <div class="col-sm-8">
+                <label class="col-sm-12 control-label text-left">{{village.registerAddress}}</label>
+            </div>
+        </div>
+
+        <div class="form-group row">
+            <label class="col-sm-3 control-label text-right">备注:</label>
+            <div class="col-sm-8">
+                <label class="col-sm-12 control-label text-left">{{village.remark}}</label>
+            </div>
+        </div>
+
+    </form>
+</div>
+<div class="modal-footer ng-scope">
+    <button class="btn btn-default" ng-click="close()">关闭</button>
+</div>

@@ -81,9 +81,9 @@ app.controller('companyListController', ['$scope', '$http', '$modal', 'toaster',
             $scope.$emit("NOTBUSY");
             $scope.codes = pagedata.data.content;
             $scope.totalServerItems = pagedata.data.totalElements;
-            if ($scope.totalServerItems == '0') {
-                $scope.pop('error', '', '未查询到数据');
-            }
+            // if ($scope.totalServerItems == '0') {
+            //     $scope.pop('error', '', '未查询到数据');
+            // }
         });
     };
     $scope.getPagedDataAsync($scope.pagingOptions.pageSize, $scope.pagingOptions.currentPage, "");

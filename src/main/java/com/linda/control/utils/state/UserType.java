@@ -16,14 +16,18 @@ public enum UserType {
     FIRST_ADMIN(1),
 
     /**
-     * {@code 2 普通用户}.
+     * {@code 2 业主}.
      */
     ORDINARY_USER(2),
+    /**
+     * {@code 3 租户}.
+     */
+    TENANT_USER(3),
 
     /**
-     * {@code 3 客服人员}
+     * {@code 6 客服人员}
      */
-    SERVICE_USER(3);
+    SERVICE_USER(6);
 
 
 

@@ -3,26 +3,26 @@
 
 var app =
 angular.module('app')
-    .run(
-        [          '$http', '$window', '$location', '$rootScope',
-            function ($http,   $window,   $location, $rootScope) {
-                $rootScope.wxloadSuccess = false;
-                $http.get('/weChats/urlSignature?url=' + $location.$$absUrl).success(function(result){
-                    if(result.status == 'SUCCESS'){
-                        var config = {};
-                        config.debug = false;
-                        config.appId = result.data.appid;
-                        config.timestamp = result.data.timestamp;
-                        config.nonceStr = result.data.noncestr;
-                        config.signature = result.data.signature;
-                        config.jsApiList = ['getLocation', 'chooseImage', 'uploadImage', 'previewImage', 'checkJsApi'];
-                        $window.wx.config(config);
-                        $rootScope.wxloadSuccess = true;
-                    }
-                });
-            }
-        ]
-    )
+    // .run(
+    //     [          '$http', '$window', '$location', '$rootScope',
+    //         function ($http,   $window,   $location, $rootScope) {
+    //             $rootScope.wxloadSuccess = false;
+    //             $http.get('/weChats/urlSignature?url=' + $location.$$absUrl).success(function(result){
+    //                 if(result.status == 'SUCCESS'){
+    //                     var config = {};
+    //                     config.debug = false;
+    //                     config.appId = result.data.appid;
+    //                     config.timestamp = result.data.timestamp;
+    //                     config.nonceStr = result.data.noncestr;
+    //                     config.signature = result.data.signature;
+    //                     config.jsApiList = ['getLocation', 'chooseImage', 'uploadImage', 'previewImage', 'checkJsApi'];
+    //                     $window.wx.config(config);
+    //                     $rootScope.wxloadSuccess = true;
+    //                 }
+    //             });
+    //         }
+    //     ]
+    // )
     .config(
     [        '$controllerProvider', '$compileProvider', '$filterProvider', '$provide',
     function ($controllerProvider,   $compileProvider,   $filterProvider,   $provide) {
