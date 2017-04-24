@@ -35,6 +35,7 @@ angular.module('app')
         app.service    = $provide.service;
         app.constant   = $provide.constant;
         app.value      = $provide.value;
+        app.version    = 1.0;
     }
   ])
   .config(['$translateProvider', function($translateProvider){

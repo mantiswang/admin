@@ -81,9 +81,9 @@ app.controller('companyListController', ['$scope', '$http', '$modal', 'toaster',
             $scope.$emit("NOTBUSY");
             $scope.codes = pagedata.data.content;
             $scope.totalServerItems = pagedata.data.totalElements;
-            // if ($scope.totalServerItems == '0') {
-            //     $scope.pop('error', '', '未查询到数据');
-            // }
+            if ($scope.totalServerItems == '0') {
+                $scope.pop('error', '', '未查询到数据');
+            }
         });
     };
     $scope.getPagedDataAsync($scope.pagingOptions.pageSize, $scope.pagingOptions.currentPage, "");
@@ -114,7 +114,7 @@ app.controller('companyListController', ['$scope', '$http', '$modal', 'toaster',
 
     $scope.createCompany = function(){
         var rtn = $modal.open({
-            templateUrl: 'tpl/company/create_village.html',
+            templateUrl: 'tpl/company/create_company.html',
             controller: 'createCompanyController',
             resolve:{
             }
@@ -131,7 +131,7 @@ app.controller('companyListController', ['$scope', '$http', '$modal', 'toaster',
 
     $scope.seeRowIndex = function(entity){
         var rtn = $modal.open({
-            templateUrl: 'tpl/company/see_village.html',
+            templateUrl: 'tpl/company/see_company.html',
             controller: 'seeCompanyController',
             resolve:{
                 customer : function (){ return entity }
@@ -148,7 +148,7 @@ app.controller('companyListController', ['$scope', '$http', '$modal', 'toaster',
     $scope.editRowIndex = function(entity){
         var id = this.row.entity.id;
         var rtn = $modal.open({
-            templateUrl: 'tpl/company/update_village.html',
+            templateUrl: 'tpl/company/update_company.html',
             controller: 'updateCompanyController',
             resolve:{
                 customerId:function(){return id;}

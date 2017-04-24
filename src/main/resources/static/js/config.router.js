@@ -59,15 +59,15 @@ angular.module('app')
                     resolve: load(["toaster", "js/controllers/personalInfo/signin.js"])
                 })
                 //用户管理
-                .state("app.sysUser", {
-                    url: "/sysuser",
+                .state("app.users", {
+                    url: "/users",
                     templateUrl: "tpl/sysuser/sysuser_list.html",
                     resolve: load(["toaster", "ngGrid", "js/controllers/sysuser/sysUserList.js" , "js/controllers/sysuser/createSysUser.js" , "js/controllers/sysuser/updateSysUser.js"  , "js/controllers/sysuser/updateSysUserPassword.js" ,"js/controllers/sysuser/seeSysUser.js" ])
                 })
 
                 //角色管理
-                .state("app.sysRole", {
-                    url: "/sysrole",
+                .state("app.roles", {
+                    url: "/roles",
                     templateUrl: "tpl/sysrole/sysRole_list.html",
                     resolve: load(["toaster", "ngGrid", "js/controllers/sysrole/sysRoleList.js" , "js/controllers/sysrole/createSysRole.js" , "js/controllers/sysrole/updateSysRole.js", "js/controllers/sysrole/seeSysRole.js" ])
                 })
@@ -78,14 +78,14 @@ angular.module('app')
                     resolve: load(["toaster", "js/controllers/personalInfo/changePassword.js"])
                 })
                 //系统配置列表
-                .state("app.sysParam", {
-                    url: "/systemparam",
+                .state("app.settings", {
+                    url: "/settings",
                     templateUrl: "tpl/systemparam/system_param_list.html",
                     resolve: load(["toaster", "ngGrid", "js/controllers/systemparam/systemParamList.js", "js/controllers/systemparam/createSystemParam.js" ,"js/controllers/systemparam/updateSystemParam.js","js/controllers/systemparam/seeSystemParam.js"])
                 })
                 //菜单管理
-                .state("app.sysRes", {
-                    url: "/sysResource",
+                .state("app.resources", {
+                    url: "/resources",
                     templateUrl: "tpl/sysresource/sysresource_list.html",
                     resolve: load(["toaster", "ngGrid", "js/controllers/sysresource/sysResourceList.js" , "js/controllers/sysresource/createSysResource.js" , "js/controllers/sysresource/updateSysResource.js" ,"js/controllers/sysresource/seeSysResource.js" ])
                 })
@@ -97,14 +97,14 @@ angular.module('app')
                 })
 
                 //小区
-                .state("app.village", {
-                  url: "/villageList",
+                .state("app.villages", {
+                  url: "/villages",
                   templateUrl: "tpl/village/village_list.html",
-                  resolve: load(["toaster", "ngGrid", "js/controllers/village/villageList.js", "js/controllers/company/createVillage.js", "js/controllers/company/seeVillage.js", "js/controllers/company/updateVillage.js"])
+                  resolve: load(["toaster", "ngGrid", "js/controllers/village/villageList.js", "js/controllers/village/createVillage.js", "js/controllers/village/seeVillage.js", "js/controllers/village/updateVillage.js"])
                 })
                 //物业
-                .state("app.company", {
-                  url: "/companyList",
+                .state("app.companies", {
+                  url: "/companies",
                   templateUrl: "tpl/company/company_list.html",
                   resolve: load(["toaster", "ngGrid", "js/controllers/company/companyList.js", "js/controllers/company/createCompany.js", "js/controllers/company/seeCompany.js", "js/controllers/company/updateCompany.js"])
                 })

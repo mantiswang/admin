@@ -5,7 +5,7 @@ info:
 
 spring:
   profiles:
-    active: test
+    active: dev
 
 hystrix:
   command:
