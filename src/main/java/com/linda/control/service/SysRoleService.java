@@ -14,7 +14,7 @@ import org.springframework.stereotype.Service;
 import java.util.List;
 
 /**
- * Created by qiaohao on 2016/10/25.
+ * Created by ywang on 2016/10/25.
  */
 @Service
 public interface SysRoleService {

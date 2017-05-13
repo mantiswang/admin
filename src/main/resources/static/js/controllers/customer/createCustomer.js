@@ -1,5 +1,5 @@
 /**
- * Created by qiaohao on 2016/10/25.
+ * Created by ywang on 2016/10/25.
  */
 app.controller('createCustomerController', ['$scope', '$http', '$modalInstance','toaster', function ($scope, $http, $modalInstance, toaster) {
 

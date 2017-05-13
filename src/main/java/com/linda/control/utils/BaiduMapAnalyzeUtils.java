@@ -7,7 +7,7 @@ import com.alibaba.fastjson.JSONObject;
 /**
  * 用于转换百度信息的共同类
  * <p>
- * Created by tianshuai on 2017/3/18.
+ * Created by ywang on 2017/3/18.
  */
 public class BaiduMapAnalyzeUtils {
 

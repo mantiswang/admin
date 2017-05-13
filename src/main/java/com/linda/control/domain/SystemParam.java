@@ -18,7 +18,7 @@ import javax.persistence.Id;
 import java.util.Date;
 
 /**
- * Created by qiaohao on 2017/3/18.
+ * Created by ywang on 2017/3/18.
  * 系统配置表
  */
 @Data

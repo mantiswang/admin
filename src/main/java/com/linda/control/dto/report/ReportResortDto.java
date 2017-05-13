@@ -6,7 +6,7 @@ import lombok.Data;
 import java.util.Date;
 
 /**
- * Created by qiaohao on 2017/3/9.
+ * Created by ywang on 2017/3/9.
  */
 @Data
 public class ReportResortDto {

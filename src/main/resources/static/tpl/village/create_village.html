@@ -1,5 +1,5 @@
  <div class="modal-header">
-        <h3 class="modal-title">客户信息</h3>
+        <h3 class="modal-title">小区信息</h3>
     </div>
     <div class="modal-body">
         <form name="form" class="form-validation" novalidate>
@@ -9,15 +9,46 @@
             </div>
             <!-- / alert -->
             <div class="form-group row">
-                <label class="col-sm-3 control-label text-right">企业名称:</label>
+                <label class="col-sm-3 control-label text-right">小区名称:</label>
                 <div class="col-sm-8">
-                    <input type="text" placeholder="请输入企业名称" class="form-control"  name="name" ng-model="village.name" required>
+                    <input type="text" placeholder="请输入小区名称" class="form-control"  name="name" ng-model="village.name" required>
                     <p>
                     <span style="color: red" ng-show="form.name.$invalid">
-                        <span ng-show="form.name.$error.required">*企业名称不可为空</span>
+                        <span ng-show="form.name.$error.required">*小区名称不可为空</span>
                     </span>
                     </p>
                 </div>
+            </div>
+            <div class="form-group row">
+                <label class="col-sm-3 control-label text-right">联系电话:</label>
+                <div class="col-sm-8">
+                    <input type="text" placeholder="请输入联系电话" class="form-control"   name="phone" ng-model="village.phone">
+
+                </div>
+            </div>
+            <div class="form-group row">
+                <label class="col-sm-3 control-label text-right">小区位置:</label>
+                <div class="col-sm-8">
+
+                    <input required type="text" placeholder="请输入小区位置" class="form-control"  name="address" ng-model="village.address">
+                    <p>
+                    <span style="color: red" ng-show="form.address.$invalid">
+                        <span ng-show="form.address.$error.required">*管理员账号不可为空</span>
+                    </span>
+                    </p>
+                </div>
+            </div>
+
+            <div class="form-group row">
+                <label class="col-sm-3 control-label text-right">物业公司:</label>
+                <div class="col-sm-8">
+                    <input type="text" placeholder="请输入物业公司" class="form-control"  name="propertyCompany" ng-model="village.propertyCompany.name">
+                </div>
+                <p>
+                    <span style="color: red" ng-show="form.propertyCompany.$invalid">
+                        <span ng-show="form.propertyCompany.$error.required">*小区名称不可为空</span>
+                    </span>
+                </p>
             </div>
 
             <div class="form-group row">
@@ -32,21 +63,16 @@
                     </p>
                 </div>
             </div>
-
-
-
             <div class="form-group row">
-                <label class="col-sm-3 control-label text-right">管理员密码:</label>
+                <label class="col-sm-3 control-label text-right">密码:</label>
                 <div class="col-sm-8">
-
-
                     <input type="password"
                            class="form-control" ng-model="village.admin.password" ng-minlength="6"
                            ng-maxlength="20" name="password" id="password"
                            placeholder="请输入密码..." required>
                     <p>
                     <span style="color: red" ng-show="form.password.$invalid">
-                        <span ng-show="form.password.$error.required">*管理员密码不可为空</span>
+                        <span ng-show="form.password.$error.required">*密码不可为空</span>
                         <span ng-show="form.password.$error.minlength">*密码长度不小于6</span>
                         <span ng-show="form.password.$error.maxlength">*密码长度不超过20</span>
                     </span>
@@ -64,98 +90,69 @@
                            id="passwordagain" placeholder="请再输一遍密码..." required>
                     <p>
                     <span style="color: red" ng-show="form.password.$valid">
-                        <span ng-show="passwordagain!=village.admin.password">*两次密码输入不一致</span>
+                        <span ng-show="passwordagain!=sysUser.password">*两次密码输入不一致</span>
                     </span>
                     </p>
 
                 </div>
             </div>
 
-
-
             <div class="form-group row">
-                <label class="col-sm-3 control-label text-right">组织机构编号:</label>
+                <label class="col-sm-3 control-label text-right">产权年限:</label>
                 <div class="col-sm-8">
-
-                    <input type="text" placeholder="请输入组织机构编号" class="form-control"  name="organizeNum" ng-model="village.organizeNum">
-
+                    <input type="text" placeholder="请输入产权年限" class="form-control"  name="propertyRights" ng-model="village.propertyRights">
                 </div>
             </div>
 
             <div class="form-group row">
-                <label class="col-sm-3 control-label text-right">注册成立日期:</label>
+                <label class="col-sm-3 control-label text-right">占地面积:</label>
                 <div class="col-sm-8">
-                    <input id="foundTime" name="foundTime"  ng-model="village.foundTime" class="form-control w-sm pull-left m-r-xs " placeholder="请选择注册成立日期" type="text" readonly/>
-                    <button  onClick="javascript:WdatePicker({el:'foundTime',dateFmt:'yyyy-MM-dd',skin:'twoer'});" type="button" class="btn btn-default pull-left m-r-xs" ><i class="glyphicon glyphicon-calendar"></i></button>
-
-                    <!--<input type="text"  class="form-control w-sm pull-left m-r-xs" name="foundTime" datepicker-popup="{{format}}" placeholder="请选择注册成立日期" ng-model="customer.foundTime" is-open="foundTimeOpened" datepicker-options="dateOptions" min-date="tomorrow"  close-text="关闭" />
-                  <span>
-                    <button type="button" class="btn btn-default pull-left m-r-xs" ng-click="timeTool($event)"><i class="glyphicon glyphicon-calendar"></i></button>
-                  </span>-->
+                    <input type="text" placeholder="请输入占地面积" class="form-control"  name="floorSpace" ng-model="village.floorSpace">
                 </div>
             </div>
-
             <div class="form-group row">
-                <label class="col-sm-3 control-label text-right">法人代表:</label>
-                <div class="col-sm-8">
-                    <input type="text" placeholder="请输入法人代表" class="form-control"  name="represent" ng-model="village.represent">
+                <label class="col-sm-3 control-label text-right">建筑面积:</label>
 
+                <div class="col-sm-8">
+                    <input type="text" placeholder="请输入建筑面积" class="form-control"  name="buildingArea" ng-model="village.buildingArea">
                 </div>
             </div>
-
             <div class="form-group row">
-                <label class="col-sm-3 control-label text-right">企业联系人:</label>
+                <label class="col-sm-3 control-label text-right">容积率:</label>
                 <div class="col-sm-8">
-                    <input type="text" placeholder="请输入企业联系人" class="form-control"   name="contacts" ng-model="village.contacts">
-
+                    <input type="text" placeholder="请输入容积率" class="form-control"  name="plotRatio" ng-model="village.plotRatio">
                 </div>
             </div>
-
-
             <div class="form-group row">
-                <label class="col-sm-3 control-label text-right">企业联系电话:</label>
+                <label class="col-sm-3 control-label text-right">绿化率:</label>
                 <div class="col-sm-8">
-                    <input type="text" placeholder="请输入企业联系电话" class="form-control"   name="phone" ng-model="village.phone">
-
+                    <input type="text" placeholder="请输入绿化率" class="form-control"  name="greeningRatio" ng-model="village.greeningRatio">
                 </div>
             </div>
-
-
-
             <div class="form-group row">
-                <label class="col-sm-3 control-label text-right">24小时值班电话:</label>
+                <label class="col-sm-3 control-label text-right">楼栋总数:</label>
                 <div class="col-sm-8">
-                    <input type="text" placeholder="请输入24小时值班电话" class="form-control"   name="dutyPhone" ng-model="village.dutyPhone">
-
+                    <input type="text" placeholder="请输入楼栋总数" class="form-control"  name="blockCount" ng-model="village.blockCount">
                 </div>
             </div>
-
             <div class="form-group row">
-                <label class="col-sm-3 control-label text-right">企业员工数量:</label>
+                <label class="col-sm-3 control-label text-right">总户数:</label>
                 <div class="col-sm-8">
-                    <input type="number" placeholder="请输入企业员工数量" class="form-control"   name="staffNum" ng-model="village.staffNum">
-
+                    <input type="text" placeholder="请输入总户数" class="form-control"  name="houseCount" ng-model="village.houseCount">
                 </div>
             </div>
-
-
             <div class="form-group row">
-                <label class="col-sm-3 control-label text-right">办公地址:</label>
+                <label class="col-sm-3 control-label text-right">物业费:</label>
                 <div class="col-sm-8">
-                    <input type="text" placeholder="请输入办公地址" class="form-control"   name="address" ng-model="village.address">
-
+                    <input type="text" placeholder="请输入物业费" class="form-control"  name="propertyFee" ng-model="village.propertyFee">
                 </div>
             </div>
-
-
             <div class="form-group row">
-                <label class="col-sm-3 control-label text-right">注册地点:</label>
+                <label class="col-sm-3 control-label text-right">停车位配比:</label>
                 <div class="col-sm-8">
-                    <input type="text" placeholder="请输入注册地点" class="form-control"   name="registerAddress" ng-model="village.registerAddress">
-
+                    <input type="text" placeholder="请输入停车位配比" class="form-control"  name="parkingRatio" ng-model="village.parkingRatio">
                 </div>
             </div>
-
 
             <div class="form-group row">
                 <label class="col-sm-3 control-label text-right">备注:</label>
@@ -164,10 +161,6 @@
 
                 </div>
             </div>
-
-
-
-
         </form>
     </div>
     <div class="modal-footer ng-scope">

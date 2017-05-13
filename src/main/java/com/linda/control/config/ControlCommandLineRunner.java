@@ -7,7 +7,7 @@ import org.springframework.boot.CommandLineRunner;
 import org.springframework.stereotype.Component;
 
 /**
- * Created by qiaohao on 2017/3/13.
+ * Created by ywang on 2017/3/13.
  * 系统启动初始化数据
  */
 @Component

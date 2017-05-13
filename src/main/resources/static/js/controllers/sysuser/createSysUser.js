@@ -1,5 +1,5 @@
 /**
- * Created by qiaohao on 2016/10/25.
+ * Created by ywang on 2016/10/25.
  */
 app.controller('createSysUserController', ['$scope', '$http','$modal', '$modalInstance', function ($scope, $http,$modal, $modalInstance) {
 

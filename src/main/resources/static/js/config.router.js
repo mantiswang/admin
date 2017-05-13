@@ -102,11 +102,23 @@ angular.module('app')
                   templateUrl: "tpl/village/village_list.html",
                   resolve: load(["toaster", "ngGrid", "js/controllers/village/villageList.js", "js/controllers/village/createVillage.js", "js/controllers/village/seeVillage.js", "js/controllers/village/updateVillage.js"])
                 })
-                //物业
+                //物业公司
                 .state("app.companies", {
                   url: "/companies",
                   templateUrl: "tpl/company/company_list.html",
                   resolve: load(["toaster", "ngGrid", "js/controllers/company/companyList.js", "js/controllers/company/createCompany.js", "js/controllers/company/seeCompany.js", "js/controllers/company/updateCompany.js"])
+                })
+                //物业人员
+                .state("app.staff", {
+                  url: "/staff",
+                  templateUrl: "tpl/staff/staff_list.html",
+                  resolve: load(["toaster", "ngGrid", "js/controllers/staff/staffList.js" , "js/controllers/staff/createStaff.js" , "js/controllers/staff/updateStaff.js", "js/controllers/staff/seeStaff.js" ])
+                })
+                //停车位
+                .state("app.parking", {
+                  url: "/parking",
+                  templateUrl: "tpl/parking/parking_list.html",
+                  resolve: load(["toaster", "ngGrid", "js/controllers/parking/parkingList.js", "js/controllers/parking/createParking.js", "js/controllers/parking/seeParking.js", "js/controllers/parking/updateParking.js"])
                 })
                 ;
           function load(srcs, callback) {

@@ -1,7 +1,7 @@
 package com.linda.control.utils;
 
 /**
- * Created by qiaohao on 2017/2/21.
+ * Created by ywang on 2017/2/21.
  */
 public class DistanceUtils {
 

@@ -1,0 +1,144 @@
+<div class="modal-header">
+    <h3 class="modal-title">用户信息</h3>
+</div>
+<div class="modal-body">
+    <form name="form" class="form-validation" novalidate>
+        <!-- alert -->
+        <div>
+            <toaster-container toaster-options="{'position-class': 'toast-top-right', 'close-button':true}"></toaster-container>
+        </div>
+        <!-- / alert -->
+        <div class="form-group row">
+            <label class="col-sm-3 control-label text-right">用户登录名:</label>
+            <div class="col-sm-8">
+                <label class="col-sm-12 control-label text-left">{{sysUser.username}}</label>
+            </div>
+        </div>
+
+
+        <div class="form-group row">
+            <label class="col-sm-3 control-label text-right">用户姓名:</label>
+            <div class="col-sm-8">
+                <label class="col-sm-12 control-label text-left">{{sysUser.fullName}}</label>
+            </div>
+        </div>
+
+
+        <div class="form-group row">
+            <label class="col-sm-3 control-label text-right">手机号:</label>
+            <div class="col-sm-8">
+                <label class="col-sm-12 control-label text-left">{{sysUser.phone}}</label>
+            </div>
+        </div>
+
+
+
+        <div class="form-group row">
+            <label class="col-sm-3 control-label text-right">邮箱:</label>
+            <div class="col-sm-8">
+                <label class="col-sm-12 control-label text-left">{{sysUser.email}}</label>
+            </div>
+        </div>
+
+
+        <div class="form-group row">
+            <label class="col-sm-3 control-label text-right">用户状态:</label>
+            <div class="col-sm-8">
+                <label class="col-sm-12 control-label text-left" ng-if="sysUser.userStatus == 0 ">
+                    禁用
+                </label>
+
+                <label class="col-sm-12 control-label text-left" ng-if="sysUser.userStatus == 1 ">
+                    启用
+                </label>
+            </div>
+        </div>
+
+        <div class="form-group row">
+            <label class="col-sm-3 control-label text-right" ng-if="sysUser.userStatus == 1 ">启用时间:</label>
+            <label class="col-sm-3 control-label text-right" ng-if="sysUser.userStatus == 0 ">禁用时间:</label>
+            <div class="col-sm-8">
+                <label class="col-sm-12 control-label text-left" ng-if="sysUser.userStatus == 0 ">
+                    {{sysUser.enableTime | date:'yyyy-MM-dd HH:mm:ss'}}
+                </label>
+
+                <label class="col-sm-12 control-label text-left" ng-if="sysUser.userStatus == 1 ">
+                    {{sysUser.disableTime | date:'yyyy-MM-dd HH:mm:ss'}}
+                </label>
+            </div>
+        </div>
+
+
+
+
+        <div class="form-group row">
+            <label class="col-sm-3 control-label text-right">允许修改密码:</label>
+            <div class="col-sm-8">
+                <label class="col-sm-12 control-label text-left" ng-if="sysUser.isModifyPassWord == 0 ">
+                    否
+                </label>
+
+                <label class="col-sm-12 control-label text-left" ng-if="sysUser.isModifyPassWord == 1 ">
+                    是
+                </label>
+            </div>
+        </div>
+
+
+<!--
+
+
+        <div class="form-group row">
+            <label class="col-sm-3 control-label text-right">允许同时登录:</label>
+            <div class="col-sm-8">
+                <label class="col-sm-12 control-label text-left" ng-if="sysUser.isMoreoverLogin == 0 ">
+                    否
+                </label>
+
+                <label class="col-sm-12 control-label text-left" ng-if="sysUser.isMoreoverLogin == 1 ">
+                    是
+                </label>
+            </div>
+        </div>
+
+
+        <div class="form-group row">
+            <label class="col-sm-3 control-label text-right">允许手机登录:</label>
+            <div class="col-sm-8">
+                <label class="col-sm-12 control-label text-left" ng-if="sysUser.isPhoneLogin == 0 ">
+                    否
+                </label>
+
+                <label class="col-sm-12 control-label text-left" ng-if="sysUser.isPhoneLogin == 1 ">
+                    是
+                </label>
+            </div>
+        </div>
+
+        <div class="form-group row">
+            <label class="col-sm-3 control-label text-right">允许微信登录:</label>
+            <div class="col-sm-8">
+                <label class="col-sm-12 control-label text-left" ng-if="sysUser.isWechatLogin == 0 ">
+                    否
+                </label>
+
+                <label class="col-sm-12 control-label text-left" ng-if="sysUser.isWechatLogin == 1 ">
+                    是
+                </label>
+            </div>
+        </div>
+
+-->
+
+        <div class="form-group row">
+            <label class="col-sm-3 control-label text-right">用户角色:</label>
+            <div class="col-sm-8">
+                <label class="col-sm-12 control-label text-left">{{sysUser.roles[0].name}}</label>
+            </div>
+        </div>
+
+    </form>
+</div>
+<div class="modal-footer ng-scope">
+    <button class="btn btn-default" ng-click="close()">关闭</button>
+</div>

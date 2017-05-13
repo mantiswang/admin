@@ -3,7 +3,7 @@ package com.linda.control.annotation;
 import java.lang.annotation.*;
 
 /**
- * Created by qiaohao on 17/3/7
+ * Created by ywang on 17/3/7
  */
 @Target({ElementType.METHOD})
 @Retention(RetentionPolicy.RUNTIME)

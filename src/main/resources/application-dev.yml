@@ -14,14 +14,14 @@ spring:
 
   datasource:
     platform: mysql
-    url: jdbc:mysql://192.168.1.124:3306/test?useUnicode=true&characterEncoding=UTF-8
+    url: jdbc:mysql://192.168.1.108:3306/test?useUnicode=true&characterEncoding=UTF-8
     username: root
     password: mysql
     driver-class-name: com.mysql.jdbc.Driver
 
   redis:
     ##集群对外暴露的IP
-    host: 192.168.1.124
+    host: 192.168.1.108
     port: 6379
 
   batch:
@@ -31,18 +31,18 @@ spring:
       enabled: false
 
 file:
-  importExcelService: http://192.168.1.124:8088/excel/
+  importExcelService: http://192.168.1.108:8088/excel/
   filePath:  /Users/leadu/Documents/data/device/
   deviceImgPath:  /Users/leadu/Documents/data/device/
   impExcelPath:  /Users/leadu/Documents/data/excel/
   androidFilePath:  /Users/leadu/Documents/data/android/
   corpInnerFilePath: /Library/WebServer/Documents/corpInnerFile/
-  requestFrontPath: http://192.168.1.124:8088/
+  requestFrontPath: http://192.168.1.108:8088/
   newsFilePath:  /Users/leadu/Documents/data/information/news/
-  requestNewsFilePath: http://192.168.1.124:8088/information/news/
+  requestNewsFilePath: http://192.168.1.108:8088/information/news/
   companyFilePath:  /Users/leadu/Documents/data/information/companyFile/
-  requestCompanyFilePath: http://192.168.1.124:8088/information/companyFile/
-  requestAndroidFilePath: http://192.168.1.124:8088/android/
+  requestCompanyFilePath: http://192.168.1.108:8088/information/companyFile/
+  requestAndroidFilePath: http://192.168.1.108:8088/android/
 
 
 systemParam:
@@ -60,7 +60,7 @@ systemParam:
 
 
 request:
-  tubaServerUrl: http://192.168.1.124:9983
+  tubaServerUrl: http://192.168.1.108:9983
   baiduServerUrl: http://api.map.baidu.com
   wxServerUrl: https://api.weixin.qq.com
   qqServerUrl: http://apis.map.qq.com

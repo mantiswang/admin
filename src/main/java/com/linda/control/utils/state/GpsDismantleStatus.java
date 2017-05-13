@@ -1,7 +1,7 @@
 package com.linda.control.utils.state;
 
 /**
- * Created by qiaohao on 2016/11/10.
+ * Created by ywang on 2016/11/10.
  */
 public enum GpsDismantleStatus {
 

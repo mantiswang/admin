@@ -3,16 +3,20 @@ package com.linda.control.controller;
 import com.linda.control.domain.SysUser;
 import com.linda.control.dto.message.Message;
 import com.linda.control.service.SysUserService;
+import com.linda.control.utils.state.UserType;
+import java.util.Map;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
-import org.springframework.web.bind.annotation.*;
-
-import java.util.Map;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RestController;
 
 /**
  * 用户信息
- * Created by qiaohao on 2016/10/25.
+ * Created by ywang on 2016/10/25.
  */
 @RestController
 @RequestMapping("/sysusers")

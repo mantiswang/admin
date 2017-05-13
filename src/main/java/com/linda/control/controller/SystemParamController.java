@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.*;
 
 /**
  * 系统配置信息
- * Created by qiaohao on 2017/3/18.
+ * Created by ywang on 2017/3/18.
  */
 @RestController
 @RequestMapping("systemparams")

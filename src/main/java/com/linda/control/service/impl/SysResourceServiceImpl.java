@@ -14,7 +14,7 @@ import org.springframework.stereotype.Service;
 import java.util.List;
 
 /**
- * Created by qiaohao on 2017/2/18.
+ * Created by ywang on 2017/2/18.
  */
 @Service
 public class SysResourceServiceImpl implements SysResourceService {

@@ -8,7 +8,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 /**
- * Created by LEO on 16/12/14.
+ * Created by ywang on 16/12/14.
  */
 @Service
 @FeignClient(name = "mapInterface", url = "${request.tubaServerUrl}")

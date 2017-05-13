@@ -5,11 +5,8 @@
 
 app.controller('villageListController', ['$scope', '$http', '$modal', 'toaster', function ($scope, $http, $modal, toaster) {
     $scope.name="";
-    $scope.organizeNum="";
-    $scope.represent="";
-    $scope.contacts="";
     $scope.phone="";
-    $scope.dutyPhone="";
+    $scope.propertyCompany="";
 
 
     //ngGrid初始化数据
@@ -48,12 +45,11 @@ app.controller('villageListController', ['$scope', '$http', '$modal', 'toaster',
         pagingOptions: $scope.pagingOptions,
         columnDefs: [
 
-            { field: 'name', displayName: '公司名称', width:'200px' },
-            { field: 'organizeNum', displayName: '组织机构编号', width:'200px' },
-            { field: 'represent', displayName: '法人代表', width:'200px' },
-            { field: 'contacts', displayName: '企业联系人', width:'200px' },
-            { field: 'phone', displayName: '企业联系电话', width:'200px' },
-            { field: 'address', displayName: '办公地址', width:'200px' },
+            { field: 'name', displayName: '小区名称', width:'200px' },
+            { field: 'address', displayName: '位置', width:'200px' },
+            { field: 'propertyCompany.name', displayName: '物业公司', width:'200px' },
+            { field: 'admin.fullName', displayName: '负责人', width:'200px' },
+            { field: 'phone', displayName: '联系电话', width:'200px' },
             { field: 'remove', displayName: '操作', width: "400px", cellTemplate: '<a ng-click="editRowIndex(row.entity)" title="编辑" class="btn btn-default m-l-xs" style="margin-top: 2px"><i class="fa fa-pencil"></i></a>' +
             '<a mwl-confirm message="确定删除?" title="删除" confirm-text="确定" cancel-text="取消" confirm-button-type="danger" on-confirm="removeRowIndex(row.entity)" class="btn btn-default m-l-xs" style="margin-top: 2px"><i class="fa fa-times"></i></a>' +
             '<a ng-click="seeRowIndex(row.entity)" title="详情" class="btn btn-default m-l-xs" style="margin-top: 2px"><i class="fa fa-info-circle"></i></a>' }
@@ -61,21 +57,13 @@ app.controller('villageListController', ['$scope', '$http', '$modal', 'toaster',
     };
     $scope.getPagedDataAsync = function (pageSize, page, searchText) {
 
-
-
-        var url = '/village?page=' + page + '&size=' + pageSize
-            +'&name=' +$scope.name
-            ;
-        if($scope.organizeNum != "")
-            url+="&organizeNum="+$scope.organizeNum;
-        if($scope.represent !="" )
-            url+="&represent="+$scope.represent;
-        if($scope.contacts !="" )
-            url+="&contacts="+$scope.contacts;
+        var url = '/village?page=' + page + '&size=' + pageSize;
+        if($scope.name != "" )
+            url+='&name=' +$scope.name;
         if($scope.phone !="" )
-            url+="&contacts="+$scope.phone;
-        if($scope.dutyPhone !="" )
-            url+="&contacts="+$scope.dutyPhone;
+            url+="&phone="+$scope.phone;
+        if($scope.propertyCompany != "" )
+            url+="&propertyCompany.name="+$scope.propertyCompany;
 
         $http.get(url).success(function (pagedata) {
             $scope.$emit("NOTBUSY");
@@ -121,7 +109,7 @@ app.controller('villageListController', ['$scope', '$http', '$modal', 'toaster',
         });
         rtn.result.then(function (status) {
             if(status == 'SUCCESS') {
-                $scope.pop('success', '', '新增客户信息成功');
+                $scope.pop('success', '', '新增小区信息成功');
                 $scope.$emit("BUSY");
                 $scope.getPagedDataAsync($scope.pagingOptions.pageSize, $scope.pagingOptions.currentPage);
             }

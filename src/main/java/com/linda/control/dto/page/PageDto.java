@@ -3,7 +3,7 @@ package com.linda.control.dto.page;
 import lombok.Data;
 
 /**
- * Created by qiaohao on 2017/3/3.
+ * Created by ywang on 2017/3/3.
  */
 @Data
 public class PageDto {

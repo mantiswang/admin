@@ -13,7 +13,7 @@ import org.springframework.stereotype.Service;
 import java.util.List;
 
 /**
- * Created by qiaohao on 2016/12/9.
+ * Created by ywang on 2016/12/9.
  */
 @Service
 public interface SysResourceService {

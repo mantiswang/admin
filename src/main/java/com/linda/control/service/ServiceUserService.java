@@ -6,7 +6,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
 /**
- * Created by wangxue on 2017/4/1.
+ * Created by ywang on 2017/4/1.
  */
 @Service
 public interface ServiceUserService {

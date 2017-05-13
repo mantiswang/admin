@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.*;
 
 /**
  * 角色管理
- * Created by qiaohao on 2016/10/25.
+ * Created by ywang on 2016/10/25.
  */
 @RestController
 @RequestMapping("/sysroles")

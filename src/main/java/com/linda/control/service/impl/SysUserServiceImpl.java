@@ -19,7 +19,7 @@ import org.springframework.stereotype.Service;
 import java.util.Date;
 
 /**
- * Created by qiaohao on 2017/2/19.
+ * Created by ywang on 2017/2/19.
  */
 @Service
 public class SysUserServiceImpl implements SysUserService {
@@ -123,6 +123,27 @@ public class SysUserServiceImpl implements SysUserService {
     }
 
     /**
+     * 创建物业人员
+     * @param sysUser
+     * @return
+     */
+    @Override
+    public ResponseEntity<Message> createStaff(SysUser sysUser, SysUser sysLoginUser) {
+
+        if(sysUserRepository.findByUsername(sysUser.getUsername())!=null){
+            return new ResponseEntity(new Message(MessageType.MSG_TYPE_ERROR,"用户名已经存在"), HttpStatus.OK);
+        }else{
+
+            sysUser.setLeaderUser(sysLoginUser);
+            sysUser.setPassword(passwordEncoder.encode(sysUser.getPassword()));
+            sysUser.setUserType(UserType.STAFF_USER.value());
+            sysUser.setVillage(sysLoginUser.getVillage());
+            sysUserRepository.save(sysUser);
+            return new ResponseEntity(new Message(MessageType.MSG_TYPE_SUCCESS), HttpStatus.OK);
+        }
+    }
+
+    /**
      * 删除用户
      * @param id
      * @return
@@ -152,5 +173,35 @@ public class SysUserServiceImpl implements SysUserService {
         sysUserRepository.save(sysUser);
         message = new Message(MessageType.MSG_TYPE_SUCCESS);
         return new ResponseEntity<Message>(message, HttpStatus.OK);
+    }
+
+
+
+    /**
+     * 分页返回物业员工列表
+     * @param sysUser
+     * @param page
+     * @param size
+     * @param loginUser
+     * @return
+     */
+    public ResponseEntity<Message> getStaffList(SysUser sysUser, int page, int size, SysUser loginUser){
+        // 系统管理员、一级管理员 可以查看操作所有的物业人员
+        if(loginUser.getUserType() == UserType.SUPER_ADMIN.value() ||
+            loginUser.getUserType() == UserType.FIRST_ADMIN.value()){
+            sysUser.setUserType(UserType.STAFF_USER.value());
+            ExampleMatcher exampleMatcher = ExampleMatcher.matching().withStringMatcher(ExampleMatcher.StringMatcher.CONTAINING).withIgnoreNullValues();
+            Page pages = sysUserRepository.findAll(Example.of(sysUser, exampleMatcher), new PageRequest(page - 1, size,new Sort(Sort.Direction.DESC,"createTime")));
+            return new ResponseEntity<Message>(new Message(MessageType.MSG_TYPE_SUCCESS, pages), HttpStatus.OK);
+        }else {//普通用户,物业管理员
+
+            sysUser.setLeaderUser(loginUser);
+
+            ExampleMatcher exampleMatcher = ExampleMatcher.matching().withStringMatcher(ExampleMatcher.StringMatcher.CONTAINING).withIgnoreNullValues();
+
+            Page pages = sysUserRepository.findAll(Example.of(sysUser, exampleMatcher), new PageRequest(page - 1, size,new Sort(Sort.Direction.DESC,"createTime")));
+
+            return new ResponseEntity<Message>(new Message(MessageType.MSG_TYPE_SUCCESS, pages), HttpStatus.OK);
+        }
     }
 }

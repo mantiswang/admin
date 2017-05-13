@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.*;
 
 /**
  * 菜单管理
- * Created by qiaohao on 2016/12/9.
+ * Created by ywang on 2016/12/9.
  */
 @RestController
 @RequestMapping("sysresources")

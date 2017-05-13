@@ -1,5 +1,5 @@
 /**
- * Created by qiaohao on 2016/12/6.
+ * Created by ywang on 2016/12/6.
  */
 app.controller('updateCustomerController', ['$scope', '$http', '$modalInstance', 'customerId', function ($scope, $http, $modalInstance,customerId) {
 

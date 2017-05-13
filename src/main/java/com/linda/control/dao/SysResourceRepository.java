@@ -10,7 +10,7 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import java.util.List;
 
 /**
- * Created by qiaohao on 2016/12/9.
+ * Created by ywang on 2016/12/9.
  */
 public interface SysResourceRepository extends JpaRepository<SysResource,Long> {
     List<SysResource> findDistinctBySysRolesInAndTypeOrderBySortAsc(List<SysRole> sysRoles, Integer integer);

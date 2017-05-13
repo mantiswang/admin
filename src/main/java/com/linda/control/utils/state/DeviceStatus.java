@@ -2,7 +2,7 @@ package com.linda.control.utils.state;
 
 /**
  * 设备状态ENUM
- * Created by tianshuai on 2017/4/5.
+ * Created by ywang on 2017/4/5.
  */
 public enum DeviceStatus {
 

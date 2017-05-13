@@ -1,7 +1,7 @@
 package com.linda.control.utils.state;
 
 /**
- * Created by tianshuai on 2017/4/3.
+ * Created by ywang on 2017/4/3.
  */
 public enum ActiveStatus {
 

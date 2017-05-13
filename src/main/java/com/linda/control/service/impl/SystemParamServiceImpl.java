@@ -15,7 +15,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 /**
- * Created by qiaohao on 2017/3/18.
+ * Created by ywang on 2017/3/18.
  * 系统配置service实现层
  */
 @Service

@@ -9,7 +9,7 @@ import java.util.Map;
 /**
  * 调用百度地图接口，根据位置取经纬度。sn计算算法
  * <p>
- * Created by tianshuai on 2017/3/7.
+ * Created by ywang on 2017/3/7.
  */
 public class SnCalUntils {
 

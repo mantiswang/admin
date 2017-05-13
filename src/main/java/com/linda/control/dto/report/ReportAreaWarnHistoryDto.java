@@ -8,7 +8,7 @@ import lombok.Data;
 import java.util.Date;
 
 /**
- * Created by qiaohao on 2017/3/6.
+ * Created by ywang on 2017/3/6.
  * 区域报警历史
  */
 @Data

@@ -1,5 +1,5 @@
 /**
- * Created by qiaohao on 2016/12/6.
+ * Created by ywang on 2016/12/6.
  */
 app.controller('seeCustomerController', ['$scope', '$http', '$modalInstance', 'customer', function ($scope, $http, $modalInstance,customer) {
 

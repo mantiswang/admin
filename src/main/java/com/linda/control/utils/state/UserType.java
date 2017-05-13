@@ -1,7 +1,7 @@
 package com.linda.control.utils.state;
 
 /**
- * Created by qiaohao on 2016/12/7.
+ * Created by ywang on 2016/12/7.
  */
 public enum UserType {
 
@@ -23,6 +23,11 @@ public enum UserType {
      * {@code 3 租户}.
      */
     TENANT_USER(3),
+
+    /**
+     * {@code 4 物业人员}.
+     */
+    STAFF_USER(4),
 
     /**
      * {@code 6 客服人员}

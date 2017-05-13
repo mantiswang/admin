@@ -28,7 +28,7 @@ import org.springframework.transaction.PlatformTransactionManager;
 
 
 /**
- * Created by qiaohao on 2017/2/17.
+ * Created by ywang on 2017/2/17.
  */
 @Configuration
 @EnableBatchProcessing

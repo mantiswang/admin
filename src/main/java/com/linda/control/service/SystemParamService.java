@@ -6,7 +6,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
 /**
- * Created by qiaohao on 2017/3/18.
+ * Created by ywang on 2017/3/18.
  * 系统配置service层
  */
 @Service

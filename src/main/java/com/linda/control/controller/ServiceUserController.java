@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.*;
 
 /**
  * 客服管理
- * Created by wangxue on 2017/4/1.
+ * Created by ywang on 2017/4/1.
  */
 @RestController
 @RequestMapping("serviceUser")

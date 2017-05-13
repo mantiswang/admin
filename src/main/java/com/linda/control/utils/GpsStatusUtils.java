@@ -3,7 +3,7 @@ package com.linda.control.utils;
 /**
  * 用于解析GPS状态
  * <p>
- * Created by tianshuai on 2017/2/25.
+ * Created by ywang on 2017/2/25.
  */
 public class GpsStatusUtils {
 

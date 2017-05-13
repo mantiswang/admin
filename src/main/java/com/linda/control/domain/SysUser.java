@@ -5,16 +5,20 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Date;
+import java.util.LinkedList;
 import java.util.List;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.EntityListeners;
+import javax.persistence.FetchType;
+import javax.persistence.ForeignKey;
 import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
-import javax.persistence.Id;
+import javax.persistence.OneToMany;
 import lombok.Data;
 import org.hibernate.annotations.DynamicInsert;
 import org.hibernate.annotations.DynamicUpdate;
@@ -27,7 +31,7 @@ import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
 /**
- * Created by LEO on 16/8/26.
+ * Created by ywang on 16/8/26.
  */
 @Data
 @Entity
@@ -49,6 +53,10 @@ public class SysUser implements UserDetails {
 
     private Integer userType; //0.超级管理员 1.一级管理员 2.物业人员 3.普通用户
 
+    @ManyToOne
+    @JoinColumn(name = "leaderId")
+    private SysUser leaderUser;
+
     private String phone;//手机号
 
     private String email;//邮箱
@@ -57,14 +65,9 @@ public class SysUser implements UserDetails {
 
     private Date disableTime;//停用日期
 
-    @JsonIgnore
+//    @JsonIgnore
     @ManyToOne
     private Village village; //subdistrict;//普通用户所属小区
-
-//    @JsonIgnore
-//    @ManyToOne
-//    private Company cmopany;//物业人员所属物业公司
-
 
 
     @Column(columnDefinition = "varchar(1) default '1' ")
@@ -123,5 +126,10 @@ public class SysUser implements UserDetails {
     @Override
     public boolean isEnabled() {
         return true;
+    }
+
+    @Override
+    public String getPassword() {
+        return password;
     }
 }

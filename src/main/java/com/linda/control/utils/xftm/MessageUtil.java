@@ -14,7 +14,7 @@ import java.util.List;
 import java.util.Map;
 
 /**
- * Created by qiaohao on 2017/4/14.
+ * Created by ywang on 2017/4/14.
  * 先锋太盟数据接口请求
  */
 public class MessageUtil {

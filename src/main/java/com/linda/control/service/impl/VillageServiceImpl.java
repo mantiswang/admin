@@ -36,14 +36,11 @@ public class VillageServiceImpl implements VillageService {
   private SysUserRepository sysUserRepository;
 
   @Autowired
-  private PasswordEncoder passwordEncoder;
-
-  @Autowired
-  private SysRoleService sysRoleService;
+  private CompanyRepository companyRepository;
 
   /**
    * 分页返回客户列表
-   * @param company
+   * @param village
    * @param page
    * @param size
    * @return
@@ -59,25 +56,32 @@ public class VillageServiceImpl implements VillageService {
 
   /**
    * 创建一个客户 并保存客户的管理员账号以及设置一个默认的一级管理员角色
-   * @param customer
+   * @param village
    * @return
    */
   public ResponseEntity<Message> createVillage(Village village){
-    SysUser teamUser = sysUserRepository.findByUsername(village.getAdmin().getUsername());
-    if(teamUser!=null){
-      return new ResponseEntity(new Message(MessageType.MSG_TYPE_ERROR,"用户名已经存在"), HttpStatus.OK);
+    String username = village.getAdmin().getUsername();
+    SysUser adminUser = sysUserRepository.findByUsername(village.getAdmin().getUsername());
+    if (adminUser == null) {
+      return new ResponseEntity(new Message(MessageType.MSG_TYPE_ERROR,"管理员账号["+username+"]不存在"), HttpStatus.OK);
     }
-    village.getAdmin().setUserType(UserType.FIRST_ADMIN.value());
-    village.getAdmin().setPassword(passwordEncoder.encode(village.getAdmin().getPassword()));
-//    company.getAdmin().setCustomer(company);
-    village.getAdmin().setRoles(sysRoleService.getOneAdminRole());
+
+    String companyName = village.getPropertyCompany().getName();
+    Company company = companyRepository.findByName(companyName);
+    if (company == null) {
+      return new ResponseEntity(new Message(MessageType.MSG_TYPE_ERROR,"物业公司["+companyName+"]不存在"), HttpStatus.OK);
+    }
+
+    village.setAdmin(adminUser);
+    village.setPropertyCompany(company);
+
     villageRepository.save(village);
     return new ResponseEntity<Message>(new Message(MessageType.MSG_TYPE_SUCCESS), HttpStatus.OK);
   }
 
   /**
    * 返回一个客户
-   * @param companyId
+   * @param villageId
    * @return
    */
   public ResponseEntity<Message> getVillage(Long villageId){

@@ -2,7 +2,7 @@ package com.linda.control.controller;
 
 /**
  * 导出报表入口
- * Created by qiaohao on 2017/3/8.
+ * Created by ywang on 2017/3/8.
  */
 
 import com.linda.control.service.ExcelService;

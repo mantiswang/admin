@@ -48,11 +48,10 @@ app.controller('companyListController', ['$scope', '$http', '$modal', 'toaster',
         pagingOptions: $scope.pagingOptions,
         columnDefs: [
 
-            { field: 'name', displayName: '公司名称', width:'200px' },
-            { field: 'organizeNum', displayName: '组织机构编号', width:'200px' },
-            { field: 'represent', displayName: '法人代表', width:'200px' },
-            { field: 'contacts', displayName: '企业联系人', width:'200px' },
-            { field: 'phone', displayName: '企业联系电话', width:'200px' },
+            { field: 'name', displayName: '物业名称', width:'200px' },
+            { field: 'level', displayName: '等级', width:'200px' },
+            { field: 'contacts', displayName: '联系人', width:'200px' },
+            { field: 'phone', displayName: '联系电话', width:'200px' },
             { field: 'address', displayName: '办公地址', width:'200px' },
             { field: 'remove', displayName: '操作', width: "400px", cellTemplate: '<a ng-click="editRowIndex(row.entity)" title="编辑" class="btn btn-default m-l-xs" style="margin-top: 2px"><i class="fa fa-pencil"></i></a>' +
             '<a mwl-confirm message="确定删除?" title="删除" confirm-text="确定" cancel-text="取消" confirm-button-type="danger" on-confirm="removeRowIndex(row.entity)" class="btn btn-default m-l-xs" style="margin-top: 2px"><i class="fa fa-times"></i></a>' +
@@ -61,21 +60,12 @@ app.controller('companyListController', ['$scope', '$http', '$modal', 'toaster',
     };
     $scope.getPagedDataAsync = function (pageSize, page, searchText) {
 
-
-
         var url = '/company?page=' + page + '&size=' + pageSize
-            +'&name=' +$scope.name
-            ;
-        if($scope.organizeNum != "")
-            url+="&organizeNum="+$scope.organizeNum;
-        if($scope.represent !="" )
-            url+="&represent="+$scope.represent;
+            +'&name=' +$scope.name;
         if($scope.contacts !="" )
             url+="&contacts="+$scope.contacts;
         if($scope.phone !="" )
-            url+="&contacts="+$scope.phone;
-        if($scope.dutyPhone !="" )
-            url+="&contacts="+$scope.dutyPhone;
+            url+="&phone="+$scope.phone;
 
         $http.get(url).success(function (pagedata) {
             $scope.$emit("NOTBUSY");
@@ -134,7 +124,7 @@ app.controller('companyListController', ['$scope', '$http', '$modal', 'toaster',
             templateUrl: 'tpl/company/see_company.html',
             controller: 'seeCompanyController',
             resolve:{
-                customer : function (){ return entity }
+                company : function (){ return entity }
             }
         });
         rtn.result.then(function (status) {
@@ -151,7 +141,7 @@ app.controller('companyListController', ['$scope', '$http', '$modal', 'toaster',
             templateUrl: 'tpl/company/update_company.html',
             controller: 'updateCompanyController',
             resolve:{
-                customerId:function(){return id;}
+                companyId:function(){return id;}
             }
         });
         rtn.result.then(function (status) {

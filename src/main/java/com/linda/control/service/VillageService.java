@@ -1,6 +1,5 @@
 package com.linda.control.service;
 
-import com.linda.control.domain.Company;
 import com.linda.control.domain.Village;
 import com.linda.control.dto.message.Message;
 import org.springframework.http.ResponseEntity;
@@ -13,7 +12,7 @@ import org.springframework.stereotype.Service;
 public interface VillageService {
   /**
    * 分页返回客户列表
-   * @param company
+   * @param village
    * @param page
    * @param size
    * @return
@@ -22,19 +21,19 @@ public interface VillageService {
 
   /**
    * 创建一个客户 并保存客户的管理员账号以及设置一个默认的一级管理员角色
-   * @param company
+   * @param village
    * @return
    */
   public ResponseEntity<Message> createVillage(Village village);
   /**
    * 返回一个客户
-   * @param companyId
+   * @param villageId
    * @return
    */
   public ResponseEntity<Message> getVillage(Long villageId);
   /**
    * 更新客户
-   * @param company
+   * @param village
    * @return
    */
   public ResponseEntity<Message> updateVillage(Village village);

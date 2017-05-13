@@ -56,24 +56,16 @@ public class CompanyServiceImpl implements CompanyService{
 
   /**
    * 创建一个客户 并保存客户的管理员账号以及设置一个默认的一级管理员角色
-   * @param customer
+   * @param company
    * @return
    */
   public ResponseEntity<Message> createCompany(Company company){
-    SysUser teamUser = sysUserRepository.findByUsername(company.getAdmin().getUsername());
-    if(teamUser!=null){
-      return new ResponseEntity(new Message(MessageType.MSG_TYPE_ERROR,"用户名已经存在"), HttpStatus.OK);
+
+    Company tmpCompany = companyRepository.findByName(company.getName());
+    if (tmpCompany != null) {
+      return new ResponseEntity(new Message(MessageType.MSG_TYPE_ERROR,"【"+company.getName()+"】已经存在"), HttpStatus.OK);
     }
-//    //查询最后一个客户的code 并+1给新客户
-//    Company codeEndCompany = companyRepository.findTop1ByOrderByCodeDesc();
-//    Integer endCode = 1;
-//    if(codeEndCompany != null)
-//      endCode = codeEndCompany.getCode()+1;
-//    company.setCode(endCode);
-    company.getAdmin().setUserType(UserType.FIRST_ADMIN.value());
-    company.getAdmin().setPassword(passwordEncoder.encode(company.getAdmin().getPassword()));
-//    company.getAdmin().setCustomer(company);
-    company.getAdmin().setRoles(sysRoleService.getOneAdminRole());
+
     companyRepository.save(company);
     return new ResponseEntity<Message>(new Message(MessageType.MSG_TYPE_SUCCESS), HttpStatus.OK);
   }
@@ -94,12 +86,12 @@ public class CompanyServiceImpl implements CompanyService{
    * @return
    */
   public ResponseEntity<Message> updateCompany(Company company){
-    Company tempCompany = companyRepository.findById(company.getId());
+//    Company tempCompany = companyRepository.findById(company.getId());
     /**
      * 这里不做赋值  会导致用户对应的customer_id丢失
      */
-    if(tempCompany != null)
-      company.setAdmin(tempCompany.getAdmin());
+//    if(tempCompany != null)
+//      company.setAdmin(tempCompany.getAdmin());
     companyRepository.save(company);
     return new ResponseEntity<Message>(new Message(MessageType.MSG_TYPE_SUCCESS), HttpStatus.OK);
   }
@@ -113,7 +105,7 @@ public class CompanyServiceImpl implements CompanyService{
   public ResponseEntity<Message> deleteCompany(Long id){
     Company company = companyRepository.findById(id);
 //    company.getAdmin().setCustomer(null);
-    sysUserRepository.delete(company.getAdmin());
+//    sysUserRepository.delete(company.getAdmin());
     companyRepository.delete(company);
     return new ResponseEntity<Message>(new Message(MessageType.MSG_TYPE_SUCCESS), HttpStatus.OK);
   }

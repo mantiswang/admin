@@ -17,7 +17,6 @@ app.controller('updateCompanyController', ['$scope', '$http', '$modalInstance', 
      */
     $scope.update = function () {
 
-        $scope.customer.foundTime=$("#foundTime").val();
         $http.put('company/'+$scope.company.id, $scope.company).success(function (data) {
             $scope.close('SUCCESS');
         })

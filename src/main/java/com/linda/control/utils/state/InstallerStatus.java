@@ -1,7 +1,7 @@
 package com.linda.control.utils.state;
 
 /**
- * Created by yuanzhenxia on 2017/4/13.
+ * Created by ywang on 2017/4/13.
  *
  * 订单（安装）归属
  */

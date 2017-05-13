@@ -1,5 +1,5 @@
 /**
- * Created by qiaohao on 2017/3/20.
+ * Created by ywang on 2017/3/20.
  */
 app.controller('seeSystemParamController', ['$scope', '$http', '$modalInstance', 'systemParam', function ($scope, $http, $modalInstance,systemParam) {
 

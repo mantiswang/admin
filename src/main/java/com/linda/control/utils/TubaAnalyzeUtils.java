@@ -13,7 +13,7 @@ import java.util.Map;
 /**
  * 用于转换图吧信息的共同类
  *
- * Created by tianshuai on 2017/2/22.
+ * Created by ywang on 2017/2/22.
  */
 public class TubaAnalyzeUtils {
 

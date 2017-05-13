@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.*;
 
 /**
  * 客户信息
- * Created by qiaohao on 2016/12/6.
+ * Created by ywang on 2016/12/6.
  */
 @RestController
 @RequestMapping("customers")

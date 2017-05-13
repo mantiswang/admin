@@ -1,5 +1,5 @@
 <div class="modal-header">
-    <h3 class="modal-title">客户信息</h3>
+    <h3 class="modal-title">小区信息</h3>
 </div>
 <div class="modal-body">
     <form name="form" class="form-validation" novalidate>
@@ -9,9 +9,16 @@
         </div>
         <!-- / alert -->
         <div class="form-group row">
-            <label class="col-sm-3 control-label text-right">企业名称:</label>
+            <label class="col-sm-3 control-label text-right">小区名称:</label>
             <div class="col-sm-8">
                 <label class="col-sm-12 control-label text-left">{{village.name}}</label>
+            </div>
+        </div>
+
+        <div class="form-group row">
+            <label class="col-sm-3 control-label text-right">位置:</label>
+            <div class="col-sm-8">
+                <label class="col-sm-12 control-label text-left">{{village.address}}</label>
             </div>
         </div>
 
@@ -22,72 +29,77 @@
             </div>
         </div>
 
-
         <div class="form-group row">
-            <label class="col-sm-3 control-label text-right">组织机构编号:</label>
+            <label class="col-sm-3 control-label text-right">物业公司:</label>
             <div class="col-sm-8">
-                <label class="col-sm-12 control-label text-left">{{village.organizeNum}}</label>
+                <label class="col-sm-12 control-label text-left">{{village.propertyCompany.name}}</label>
             </div>
         </div>
 
         <div class="form-group row">
-            <label class="col-sm-3 control-label text-right">注册成立日期:</label>
+            <label class="col-sm-3 control-label text-right">产权年限:</label>
             <div class="col-sm-8">
-                <label class="col-sm-12 control-label text-left">{{village.foundTime | date:'yyyy-MM-dd' }}</label>
+                <label class="col-sm-12 control-label text-left">{{village.propertyRights}}</label>
             </div>
         </div>
 
         <div class="form-group row">
-            <label class="col-sm-3 control-label text-right">法人代表:</label>
+            <label class="col-sm-3 control-label text-right">占地面积:</label>
             <div class="col-sm-8">
-                <label class="col-sm-12 control-label text-left">{{village.represent}}</label>
+                <label class="col-sm-12 control-label text-left">{{village.floorSpace}}</label>
             </div>
         </div>
 
         <div class="form-group row">
-            <label class="col-sm-3 control-label text-right">企业联系人:</label>
+            <label class="col-sm-3 control-label text-right">建筑面积:</label>
             <div class="col-sm-8">
-                <label class="col-sm-12 control-label text-left">{{village.contacts}}</label>
-            </div>
-        </div>
-
-
-        <div class="form-group row">
-            <label class="col-sm-3 control-label text-right">企业联系电话:</label>
-            <div class="col-sm-8">
-                <label class="col-sm-12 control-label text-left">{{village.phone}}</label>
-            </div>
-        </div>
-
-
-
-        <div class="form-group row">
-            <label class="col-sm-3 control-label text-right">24小时值班电话:</label>
-            <div class="col-sm-8">
-                <label class="col-sm-12 control-label text-left">{{village.dutyPhone}}</label>
+                <label class="col-sm-12 control-label text-left">{{village.buildingArea}}</label>
             </div>
         </div>
 
         <div class="form-group row">
-            <label class="col-sm-3 control-label text-right">企业员工数量:</label>
+            <label class="col-sm-3 control-label text-right">容积率:</label>
             <div class="col-sm-8">
-                <label class="col-sm-12 control-label text-left">{{village.staffNum}}</label>
+                <label class="col-sm-12 control-label text-left">{{village.plotRatio}}</label>
             </div>
         </div>
 
         <div class="form-group row">
-            <label class="col-sm-3 control-label text-right">办公地址:</label>
+            <label class="col-sm-3 control-label text-right">绿化率:</label>
             <div class="col-sm-8">
-                <label class="col-sm-12 control-label text-left">{{village.address}}</label>
+                <label class="col-sm-12 control-label text-left">{{village.greeningRatio}}</label>
             </div>
         </div>
 
         <div class="form-group row">
-            <label class="col-sm-3 control-label text-right">注册地点:</label>
+            <label class="col-sm-3 control-label text-right">楼栋总数:</label>
             <div class="col-sm-8">
-                <label class="col-sm-12 control-label text-left">{{village.registerAddress}}</label>
+                <label class="col-sm-12 control-label text-left">{{village.blockCount}}</label>
             </div>
         </div>
+
+        <div class="form-group row">
+            <label class="col-sm-3 control-label text-right">总户数:</label>
+            <div class="col-sm-8">
+                <label class="col-sm-12 control-label text-left">{{village.houseCount}}</label>
+            </div>
+        </div>
+
+        <div class="form-group row">
+            <label class="col-sm-3 control-label text-right">物业费:</label>
+            <div class="col-sm-8">
+                <label class="col-sm-12 control-label text-left">{{village.propertyFee}}</label>
+            </div>
+        </div>
+
+        <div class="form-group row">
+            <label class="col-sm-3 control-label text-right">停车位配比:</label>
+            <div class="col-sm-8">
+                <label class="col-sm-12 control-label text-left">{{village.parkingRatio}}</label>
+            </div>
+        </div>
+
+
 
         <div class="form-group row">
             <label class="col-sm-3 control-label text-right">备注:</label>

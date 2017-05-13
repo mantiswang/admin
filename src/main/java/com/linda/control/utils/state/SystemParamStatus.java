@@ -4,7 +4,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 /**
- * Created by qiaohao on 2017/3/20.
+ * Created by ywang on 2017/3/20.
  * 源头 SystemParamStatus
  */
 public enum SystemParamStatus {

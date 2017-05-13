@@ -1,5 +1,5 @@
 /**
- * Created by qiaohao on 2017/03/20.
+ * Created by ywang on 2017/03/20.
  */
 app.controller('systemParamListController', ['$scope', '$http', '$modal', 'toaster', function ($scope, $http, $modal, toaster) {
     $scope.systemParamName = "";

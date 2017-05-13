@@ -1,7 +1,7 @@
 package com.linda.control.utils.state;
 
 /**
- * Created by qiaohao on 2017/3/7.
+ * Created by ywang on 2017/3/7.
  * 区域标识
  */
 public enum AreaFlag {

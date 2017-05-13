@@ -6,7 +6,7 @@ import java.io.Serializable;
 import java.util.Date;
 
 /**
- * Created by LEO on 16/11/18.
+ * Created by ywang on 16/11/18.
  * GPS数据模型类,用于接收消息队列中的数据
  */
 @Data

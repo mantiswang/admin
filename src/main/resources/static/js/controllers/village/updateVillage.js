@@ -17,7 +17,6 @@ app.controller('updateVillageController', ['$scope', '$http', '$modalInstance', 
      */
     $scope.update = function () {
 
-        $scope.village.foundTime=$("#foundTime").val();
         $http.put('village/'+$scope.village.id, $scope.village).success(function (data) {
             $scope.close('SUCCESS');
         })

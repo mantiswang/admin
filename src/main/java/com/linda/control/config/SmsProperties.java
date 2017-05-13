@@ -4,7 +4,7 @@ import lombok.Data;
 import org.springframework.boot.context.properties.ConfigurationProperties;
 
 /**
- * Created by qiaohao on 17/2/23.
+ * Created by ywang on 17/2/23.
  */
 @ConfigurationProperties(prefix = "sms")
 @Data

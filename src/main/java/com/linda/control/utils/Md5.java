@@ -4,7 +4,7 @@ import java.math.BigInteger;
 import java.security.MessageDigest;
 
 /**
- * Created by qiaohao on 2017/3/4.
+ * Created by ywang on 2017/3/4.
  */
 public class Md5 {
 

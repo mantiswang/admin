@@ -1,5 +1,5 @@
 /**
- * Created by qiaohao on 2016/10/25.
+ * Created by ywang on 2016/10/25.
  */
 app.controller('createSysRoleController', ['$scope', '$http', '$modalInstance', function ($scope, $http, $modalInstance) {
     $scope.sysResources = [];

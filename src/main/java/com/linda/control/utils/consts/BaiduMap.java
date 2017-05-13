@@ -1,7 +1,7 @@
 package com.linda.control.utils.consts;
 
 /**
- * Created by LEO on 16/12/15.
+ * Created by ywang on 16/12/15.
  */
 public enum BaiduMap {
 

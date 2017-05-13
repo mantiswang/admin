@@ -7,7 +7,7 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import java.util.List;
 
 /**
- * Created by qiaohao on 2016/12/6.
+ * Created by ywang on 2016/12/6.
  */
 public interface CustomerRepository extends JpaRepository<Customer,String> {
     Customer findByCode(Integer code);

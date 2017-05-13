@@ -11,6 +11,8 @@
 	<name>admin</name>
 	<description>linda admin</description>
 
+
+
 	<parent>
 		<groupId>org.springframework.boot</groupId>
 		<artifactId>spring-boot-starter-parent</artifactId>
@@ -136,6 +138,7 @@
       <plugin>
         <groupId>com.spotify</groupId>
         <artifactId>docker-maven-plugin</artifactId>
+        <version>0.4.13</version>
         <configuration>
           <imageName><!-- ${docker.registryUrl}/ -->${project.name}:${project.version}</imageName>
           <imageTags>
